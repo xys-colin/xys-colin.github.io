@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Linux基础认识 | xys-colin的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一. 磁盘分区 在Linux系统中，每个设备都被当成一个文件来对待。比如SATA接口的硬盘的文件名即为&#x2F;dev&#x2F;sd[a-d]，其中括号内的字母为a-d当中的任意一 SATA、USB、SAS等磁盘接口都是使用SCSI模块来驱动的，因此这些接口的磁盘设备文件名都是&#x2F;dev&#x2F;sd[a-p]的格式，设备文件名是根据Linux内核检测磁盘的顺序来命名。 磁盘由碟片、机械手臂、磁头和主轴马达所组成。 碟片上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础认识">
+<meta property="og:url" content="http://example.com/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/index.html">
+<meta property="og:site_name" content="xys-colin的博客">
+<meta property="og:description" content="一. 磁盘分区 在Linux系统中，每个设备都被当成一个文件来对待。比如SATA接口的硬盘的文件名即为&#x2F;dev&#x2F;sd[a-d]，其中括号内的字母为a-d当中的任意一 SATA、USB、SAS等磁盘接口都是使用SCSI模块来驱动的，因此这些接口的磁盘设备文件名都是&#x2F;dev&#x2F;sd[a-p]的格式，设备文件名是根据Linux内核检测磁盘的顺序来命名。 磁盘由碟片、机械手臂、磁头和主轴马达所组成。 碟片上">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-21T14:32:25.000Z">
+<meta property="article:modified_time" content="2021-11-21T14:34:34.535Z">
+<meta property="article:author" content="xys-colin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xys-colin的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xys-colin的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穿越</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Linux基础认识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2019-11-21T14:32:25.000Z" itemprop="datePublished">2019-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Linux基础认识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一-磁盘分区"><a href="#一-磁盘分区" class="headerlink" title="一. 磁盘分区"></a>一. 磁盘分区</h2><ol>
+<li>在Linux系统中，每个设备都被当成一个文件来对待。比如SATA接口的硬盘的文件名即为/dev/sd[a-d]，其中括号内的字母为a-d当中的任意一</li>
+<li>SATA、USB、SAS等磁盘接口都是使用SCSI模块来驱动的，因此这些接口的磁盘设备文件名都是/dev/sd[a-p]的格式，设备文件名是根据Linux内核检测磁盘的顺序来命名。</li>
+<li>磁盘由碟片、机械手臂、磁头和主轴马达所组成。</li>
+<li>碟片上面可细分出<strong>扇区</strong>（磁道中被半径分割的一个个扇形）与<strong>磁道</strong>（每一个圆形就是一个磁道）两种单位，其中扇区的物理大小设计有两种，分别是512字节和4k字节。</li>
+<li>所有碟片的同一个磁道我们称为<strong>柱面</strong>，通常那是文件系统的最小单位，也就是分区的最小单位。<h3 id="MBR-MS-DOS-分区表格式与限制"><a href="#MBR-MS-DOS-分区表格式与限制" class="headerlink" title="MBR(MS-DOS)分区表格式与限制"></a>MBR(MS-DOS)分区表格式与限制</h3><blockquote>
+<p>早期的Linux系统为了兼容Windows的磁盘，使用的是MBR(Master Boot Record,主引导记录)的方式来处理引导程序与分区表，启动引导程序记录区与分区表则通常放在磁盘的第一个扇区，这个扇区通常是512字节的大小（旧磁盘扇区都是512字节）</p>
+</blockquote>
+</li>
+<li>第一个扇区的512字节主要有两个东西：<ul>
+<li> <strong>主引导记录（Master Boot Record，MBR）</strong>：可以安装启动引导程序的地方，有446字节。</li>
+<li><strong>分区表</strong>：记录整块硬盘分区的状态，有64字节。由于分区表所在的区块仅有64字节容量，因此最多仅能有四组记录区，每组记录区记录了该区段的启动与结束的柱面号码。</li>
+</ul>
+</li>
+<li>这四个分区的记录被称为主要或扩展分区</li>
+<li>扩展分区的目的是使用额外的扇区来记录分区的信息，扩展分区本身并不能被拿来格式化。扩展分区可以继续切出分区，就称为逻辑分区</li>
+<li>能够被格式化后作为数据存取的分区是主要分区与逻辑分区，扩展分区无法格式化。</li>
+<li>逻辑分区的数量依操作系统而不同，在Linux系统中SATA硬盘已经可以突破63个以上的分区限制。</li>
+<li>当分区超过4个分区是，一定要有扩展分区，而且必须将所有剩下的空间都分配给扩展分区，然后再以逻辑分区的方式来划分扩展分区的空间。分区的序号1-4号是保留给主要/扩展分区的，因此第一个逻辑分区一定是由5号开始。</li>
+<li>MBR分区表的限制有以下问题<ul>
+<li>操作系统无法使用2.2TB以上的磁盘容量</li>
+<li>MBR仅有一个区块，若被破坏后，经常无法或很难恢复</li>
+<li>MBR内的存放启动引导程序的区块仅446字节，无法存储较多的程序代码。<h3 id="GPT-GUID-partition-table-磁盘分区表"><a href="#GPT-GUID-partition-table-磁盘分区表" class="headerlink" title="GPT(GUID partition table)磁盘分区表"></a>GPT(GUID partition table)磁盘分区表</h3><blockquote>
+<p>为了兼容所有的磁盘，因此在扇区的定义上面，大多会使用所谓的逻辑区块地址(Logical Block Address,LBA)来处理，而第一个LBA称为LBA0（从0开始编号），与MBR仅使用第一个512字节区块来记录不同，GPT使用了34个LBA区块来记录分区信息，除了前面的34个LBA之外，整个磁盘的最后34个LBA也拿来作为另外一个备份。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>**LBA0(MBR兼容区块)**：<blockquote>
+<p>与MBR模式相似，这个兼容区块也分为两个部分，一个是跟之前446字节相似的区块，<strong>存储了第一阶段的启动引导程序</strong>。二是原本的分区表的记录区内，这个兼容模式仅放入一个特殊标识符，用来表示此磁盘为GPT格式之意。而不懂GPT分区表的磁盘管理程序，就不会认识这块磁盘除非用户有特殊要求要处理这块磁盘。</p>
+</blockquote>
+</li>
+<li>**LBA1(GPT 表头记录)**：<blockquote>
+<p>这个部分记录了分区表本身的位置与大小，同时记录了备份用的GPT分区（就是最后34个LBA区块）放置的位置，同时放置了分区表的校验码（CRC32），操作系统可以根据这个校验码来判断GPT是否正确，若有错误，还可以通过这个记录区来获取备份的GPT来恢复。</p>
+</blockquote>
+</li>
+<li>**LBA2-33(实际记录分区信息处)**：<blockquote>
+<p>从LBA2区块开始，<strong>每个LBA都可以记录4组分区记录，所以在默认的情况下，总共可以有4 * 32=128组分区记录</strong>因为每个LBA有512字节，因此每组记录用到128字节的空间，除了每组记录所需要的标识符与相关的记录之外，GPT在每组记录中分别提供了64位来记载开始/结束的扇区号码，因此，GPT分区表对于单一分区来说，最大容量限制为2^64 * 512字节=2^63 * 1K字节=2^33 * 1TB=8ZB。<strong>GPT分区已经没有所谓的主、扩展、逻辑分区的概念，既然每组记录都可以独立存在，当然每个都可以视为主要分区，每个分区都可以格式化使用</strong></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="启动流程中的BIOS和UEFI启动检测程序"><a href="#启动流程中的BIOS和UEFI启动检测程序" class="headerlink" title="启动流程中的BIOS和UEFI启动检测程序"></a>启动流程中的BIOS和UEFI启动检测程序</h3><ol>
+<li>整个启动流程到操作系统之前的过程：<blockquote>
+<ol>
+<li>BIOS：启动主动执行的固件，会认识第一个可启动的设备。</li>
+<li>MBR：第一个可启动设备的第一个扇区内的主引导记录块，内含启动引导代码；</li>
+<li>启动引导程序(boot loader)：一个可读取内核文件来执行的软件</li>
+<li>内核文件：开始启动操作系统</li>
+</ol>
+</blockquote>
+</li>
+<li>Boot loader的主要任务有：<ol>
+<li>提供选项：用户可以选择不同的启动选项，这也是多重引导的重要功能。</li>
+<li>加载内核文件：直接指向可使用的程序区段来启动操作系统</li>
+<li>转交其他启动引导程序：将启动管理功能转交给其他启动引导程序负责<blockquote>
+<p>启动引导程序除了可以安装在MBR之外,还可以安装在每个分区的启动扇区(boot sector)</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Linux磁盘分区的选择"><a href="#Linux磁盘分区的选择" class="headerlink" title="Linux磁盘分区的选择"></a>Linux磁盘分区的选择</h3><ol>
+<li> 目录树架构: &nbsp; 整个目录树架构最重要的就是那个根目录,这个根目录的表示方法为一条斜线”<strong>/</strong>“</li>
+<li> 挂载: 就是利用一个目录当成进入点,将磁盘分区的数据放置在该目录下;也就是说进入该目录就可以读取该分区的意思</li>
+</ol>
+<h4 id="X-Window-与命令行模式的切换"><a href="#X-Window-与命令行模式的切换" class="headerlink" title="X Window 与命令行模式的切换"></a>X Window 与命令行模式的切换</h4><ul>
+<li><strong>Ctrl + Alt + F2 ~ F6: 命令行模式登录tty2~tty6终端</strong></li>
+<li><strong>Ctrl + Alt + F1: 图形用户界面模式</strong> </li>
+<li><strong>纯命令行界面(不能有X存在)启动图形界面的做法: startx</strong></li>
+</ul>
+<h2 id="二-命令的操作"><a href="#二-命令的操作" class="headerlink" title="二. 命令的操作"></a>二. 命令的操作</h2><h3 id="开始执行命令"><a href="#开始执行命令" class="headerlink" title="开始执行命令"></a>开始执行命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [-options] parameter2 parameter2 ... </span><br></pre></td></tr></table></figure>
+<ol>
+<li>一行命令中第一个输入的部分绝对是命令(command)或可执行文件(例如shell脚本)</li>
+<li>command为命令的名称,例如变换1工作目录的命令为cd等;</li>
+<li>中括号 [] 并不存在与实际的命令中,表示是可选的,而加入选项设置时,通常选项前会带 - 号,例如 -h;有时候会使用选项的完整全名,则选项前带有 – 符号,例如 –help;</li>
+<li>parameter1 parameter2为依附在选项后面的参数, 或是command的参数</li>
+<li>命令, 选项, 参数等这几个东西中间以空格来区分, 不论空几格shell都视为一格,<strong>所以空格是很重要的特殊字符</strong></li>
+<li>按下回车键后, 该命令就立即执行, <strong>回车键代表着一行命令的开始行动</strong></li>
+<li>命令太长的时候, 可以使用反斜杠( \ )来转义回车键, 使命令连续到下一行, 注意, 反斜杠后就立刻接着特殊字符才能转义</li>
+</ol>
+<h3 id="基础的命令的操作"><a href="#基础的命令的操作" class="headerlink" title="基础的命令的操作"></a>基础的命令的操作</h3><ul>
+<li><strong>显示日期与时间的命令: date [+%Y/%m/%d]</strong></li>
+<li><strong>显示日历的命令: cal [month] [year]</strong></li>
+<li><strong>简单的计算机: bc</strong></li>
+</ul>
+<h3 id="重要的几个热键"><a href="#重要的几个热键" class="headerlink" title="重要的几个热键"></a>重要的几个热键</h3><ol>
+<li><p>[Tab]</p>
+<ol>
+<li>[Tab]接在一串命令的第一个字段后面，则为<strong>命令补全</strong></li>
+<li>[Tab]接在一串命令的第二个字段后面，则为<strong>文件补全</strong></li>
+<li>若安装了Bash-completion软件，则在某些命令后面使用[Tab]按键时，则可以进行<strong>选项/参数的补齐</strong>功能</li>
+</ol>
+</li>
+<li><p>[Ctrl]-c</p>
+</li>
+<li><p>[Ctrl]-d</p>
+<h3 id="重要的几个热键-1"><a href="#重要的几个热键-1" class="headerlink" title="重要的几个热键"></a>重要的几个热键</h3></li>
+<li><p>[Tab]</p>
+<ol>
+<li>[Tab]接在一串命令的第一个字段后面，则为<strong>命令补全</strong></li>
+<li>[Tab]接在一串命令的第二个字段后面，则为<strong>文件补全</strong></li>
+<li>若安装了Bash-completion软件，则在某些命令后面使用[Tab]按键时，则可以进行<strong>选项/参数的补齐</strong>功能</li>
+</ol>
+</li>
+<li><p>[Ctrl]-c：（先按着[Ctrl]不放再按下c，是组合按键），就是中断目前程序的按键</p>
+</li>
+<li><p>[Ctrl]-d：键盘输入结束(End Of File，EOF或End Of Input)的意思. 它也可以用来取代exit的输入.例如想要直接离开命令行模式,可以直接按下它就能够直接离开,相当于输入exit.</p>
+</li>
+<li><p>[Shift]+{[Page UP][Page Down]} :当命令的输入信息相当长,导致前面的部分已经不在目前的屏幕中,可以用它用来翻页</p>
+</li>
+</ol>
+<h3 id="man-page"><a href="#man-page" class="headerlink" title="man page"></a>man page</h3><ol>
+<li>[–help]:能够将该命令的用法作为一个大致的理解. 例: date –help</li>
+<li>man: 在其他在线求助系统寻找说明的内容. 例: man date . 出现的这个屏幕界面,称为man page</li>
+</ol>
+<p>在man page 第一行出现的 [DATE(1)] ,DATE代表是命令的名称, 数字1代表” 一般用户可以使用的命令 “,其他数字如下表:</p>
+<table>
+<thead>
+<tr>
+<th align="center">代号</th>
+<th align="center">代表内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><strong>用户在shell环境中可以可以操作的命令或可执行文件</strong></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">系统内核可调用的函数与工具等</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">一些常用的函数与函数库, 大部分为Ｃ的函数库</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">设备文件的说明，通常在/dev下的文件</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><strong>配置文件或是某些文件的格式</strong></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">游戏</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">惯例与协议等, 例如Linux文件系统, 网络协议, ASCII代码等的说明</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><strong>系统管理员可用的管理命令</strong></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">跟内核有关的文件</td>
+</tr>
+</tbody></table>
+<p>上述表的内容可以使用[man man] 来更详细地取得说明。</p>
+<h3 id="info-page"><a href="#info-page" class="headerlink" title="info page"></a>info page</h3><p>info与man的用途差不多，但是与man page一口气输出一堆信息不同的是，info page则是将文件数据拆成一个一个的段落，每个段落用自己的页面来编写，并且在各个页面中还有类似网页的超链接来跳到各不同的页面中，每个独立的页面也被称为一个节点（node）。</p>
+<ol>
+<li>在这个页面中可以通过直接按下Ｎ、P、U去到下一个、上一个与上一层的节点。当不知道怎么使用info，直接按下h，系统就能提供一些基本按键功能的介绍。</li>
+</ol>
+<p><strong>总结下man、info、/usr/share/doc/ ：</strong></p>
+<ul>
+<li>在命令模式中，如果你知道某个命令，但却忘记了相关选项参数，先使用【–help】的功能来查询相关信息</li>
+<li>当有任何不知道的命令或文件格式，但是想要了解它，使用man或info来查询</li>
+<li>而如果想要架设一些其他的服务，或想要利用一整组软件来完成某项功能时，使用/usr/share/doc下面查询有没有服务的说明文件</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/" data-id="ckywz1c0z0000to0wf41kauiq" data-title="Linux基础认识" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/30/Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Linux文件和目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">git学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/27/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8/">vim程序编辑器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/30/Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/">Linux文件和目录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/">Linux基础认识</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">git学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 xys-colin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
