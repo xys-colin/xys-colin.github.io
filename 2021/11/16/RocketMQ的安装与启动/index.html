@@ -19,16 +19,23 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="一、基本概念1.1 消息(Message)消息是指，消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。 1.2 主题(Topic)  Topic表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message 1:n message:topic 1:1 一个生产者可以同时发送多种Topic的">
+<meta name="description" content="一、基本概念1.1 消息(Message)消息是指，消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RocketMQ的安装与启动">
 <meta property="og:url" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/index.html">
 <meta property="og:site_name" content="xys-colin的博客">
-<meta property="og:description" content="一、基本概念1.1 消息(Message)消息是指，消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。 1.2 主题(Topic)  Topic表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message 1:n message:topic 1:1 一个生产者可以同时发送多种Topic的">
+<meta property="og:description" content="一、基本概念1.1 消息(Message)消息是指，消息系统所传输信息的物理载体，生产和消费数据的最小单位，每条消息必须属于一个主题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/topic.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/queue.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/sharding.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/construct.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/consumer.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/consumer1.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/broker.png">
+<meta property="og:image" content="http://example.com/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/construct.png">
 <meta property="article:published_time" content="2021-11-16T04:08:32.000Z">
-<meta property="article:modified_time" content="2022-02-02T15:13:02.598Z">
+<meta property="article:modified_time" content="2022-02-10T09:02:24.008Z">
 <meta property="article:author" content="xys-colin">
 <meta property="article:tag" content="RocketMQ">
 <meta property="article:tag" content="MQ">
@@ -151,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%B6%88%E6%81%AF-Message"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 消息(Message)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E4%B8%BB%E9%A2%98-Topic"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 主题(Topic)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%B6%88%E6%81%AF-Message"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 消息(Message)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E4%B8%BB%E9%A2%98-Topic"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 主题(Topic)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%A0%87%E7%AD%BE-Tag"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 标签(Tag)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E9%98%9F%E5%88%97-Queue"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 队列(Queue)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%B6%88%E6%81%AF%E6%A0%87%E8%AF%86-MessageId-Key"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 消息标识(MessageId&#x2F;Key)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二、系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Producer"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Producer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Consumer"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Name-Server"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Name Server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 功能介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E8%B7%AF%E7%94%B1%E6%B3%A8%E5%86%8C"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 路由注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E8%B7%AF%E7%94%B1%E5%89%94%E9%99%A4"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 路由剔除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-%E8%B7%AF%E7%94%B1%E5%8F%91%E7%8E%B0"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 路由发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-5-%E5%AE%A2%E6%88%B7%E7%AB%AFNameServer%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="nav-number">2.3.5.</span> <span class="nav-text">2.3.5 客户端NameServer选择策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Broker"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Broker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 功能介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%E6%A8%A1%E5%9D%97%E6%9E%84%E6%88%90"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 模块构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 集群部署</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 具体流程</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -166,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -245,7 +252,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-02 23:13:02" itemprop="dateModified" datetime="2022-02-02T23:13:02+08:00">2022-02-02</time>
+      <time title="修改时间：2022-02-10 17:02:24" itemprop="dateModified" datetime="2022-02-10T17:02:24+08:00">2022-02-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,10 +279,144 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><h3 id="1-1-消息-Message"><a href="#1-1-消息-Message" class="headerlink" title="1.1 消息(Message)"></a>1.1 消息(Message)</h3><p><strong>消息</strong>是指，消息系统所传输信息的物理载体，生产和消费数据的最小单位，<em>每条消息必须属于一个主题</em>。</p>
+<span id="more"></span>
+
 <h3 id="1-2-主题-Topic"><a href="#1-2-主题-Topic" class="headerlink" title="1.2 主题(Topic)"></a>1.2 主题(Topic)</h3><img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/topic.png" class="">
 
-<p><code>Topic表示一类消息的集合</code>，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message 1:n message:topic 1:1</p>
-<p>一个生产者可以同时发送多种Topic的消息；而一个消费者只对某种特定的Topic感兴趣，即只可以订阅和消费一种Topic的消息。 producer:topic 1:n consumer:topic 1:1</p>
+<p><code>Topic表示一类消息的集合</code>，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message 1:n   message:topic 1:1</p>
+<p>一个生产者可以同时发送多种Topic的消息；而一个消费者只对某种特定的Topic感兴趣，即只可以订阅和消费一种Topic的消息。 producer:topic 1:n   topic:consumer 1:1</p>
+<blockquote>
+<p>topic和consumer是一对一的原因是：</p>
+<p>在 <code>subscribeTable</code> 和 <code>subscriptionInner</code> 方法中，是使用 Map 集合的方式存储topic订阅者，存储格式大概为{group: topic}, Map 的特性就是 Key 不能重复，所以相同的 Key 会直接替换，即后者注册的消费者会顶替之前注册的消费者，但可以创建1多个消费组，同时订阅一个topic。</p>
+</blockquote>
+<h3 id="1-3-标签-Tag"><a href="#1-3-标签-Tag" class="headerlink" title="1.3 标签(Tag)"></a>1.3 标签(Tag)</h3><p>为消息设置的标签，用于同一主题下区分不同类型的消息。来自同一业务单元的消息，可以根据不同业务目的在同一主题下设置不同标签。标签能够有效地保持代码的清晰度和连贯性，并优化RocketMQ提供的查询系统。消费者可以根据Tag实现对不同子主题的不同消费逻辑，实现更好的扩展性。</p>
+<p>Topic是消息的一级分类，Tag是消息的二级分类。</p>
+<blockquote>
+<p>Topic：货物</p>
+<p>tag=上海</p>
+<p>tag=江苏</p>
+<p>tag=浙江</p>
+<p>——- 消费者 —–</p>
+<p>topic=货物 tag = 上海</p>
+<p>topic=货物 tag = 上海|浙江</p>
+<p>topic=货物 tag = *</p>
+</blockquote>
+<h3 id="1-4-队列-Queue"><a href="#1-4-队列-Queue" class="headerlink" title="1.4 队列(Queue)"></a>1.4 队列(Queue)</h3><p>存储消息的物理实体。一个Topic中可以包含多个Queue，每个Queue中存放的就是该Topic的消息。一个Topic的Queue也被称为一个Topic中消息的分区（Partition）。</p>
+<p><strong>分区=queue</strong>，一个Topic的Queue中的消息只能被一个消费者组中的一个消费者消费。一个Queue中的消息不允许同一个消费者组中的多个消费者同时消费。</p>
+<img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/queue.png" class="">
+
+<p>在学习参考其它相关资料时，还会看到一个概念：<code>分片</code>（Sharding）。分片不同于分区。在RocketMQ中，分片指的是存放相应Topic的Broker。每个分片中会创建出相应数量的分区，即Queue，每个Queue的大小都相同的。</p>
+<img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/sharding.png" class="">
+
+<h3 id="1-5-消息标识-MessageId-Key"><a href="#1-5-消息标识-MessageId-Key" class="headerlink" title="1.5 消息标识(MessageId/Key)"></a>1.5 消息标识(MessageId/Key)</h3><p>RocketMQ中每个消息拥有唯一的MessageId(<code>有可能重复</code>)，且可以携带具有业务标识的Key，以方便对消息的查询。不过需要注意的是，MessageId有两个：在生产者send()消息时会自动生成一个MessageId（msgId)，当消息到达Broker后，Broker也会自动生成一个MessageId(offsetMsgId)。<strong>msgId、offsetMsgId与key都称为消息标识。</strong></p>
+<ul>
+<li><p>msgId：由producer端生成，其生成规则为：</p>
+<blockquote>
+<p>producerIp + 进程pid + MessageClientIDSetter类的ClassLoader的hashCode +当前时间 + AutomicInteger自增计数器</p>
+</blockquote>
+</li>
+<li><p>offsetMsgId：由broker端生成，其生成规则为：</p>
+<blockquote>
+<p>brokerIp + 物理分区的offset（Queue中的偏移量）</p>
+</blockquote>
+</li>
+<li><p>key：由用户指定的业务相关的唯一标识</p>
+</li>
+</ul>
+<h2 id="二、系统架构"><a href="#二、系统架构" class="headerlink" title="二、系统架构"></a>二、系统架构</h2><img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/construct.png" class="">
+
+<p><strong>RocketMQ架构上主要分为四部分构成</strong>：</p>
+<h3 id="2-1-Producer"><a href="#2-1-Producer" class="headerlink" title="2.1 Producer"></a>2.1 Producer</h3><p>消息生产者，负责生产消息。Producer通过MQ的负载均衡模块选择相应的Broker集群队列进行消息投递，投递的过程支持快速失败并且低延迟。</p>
+<blockquote>
+<p>例如，业务系统产生的日志写入到MQ的过程，就是消息生产的过程<br>再如，电商平台中用户提交的秒杀请求写入到MQ的过程，就是消息生产的过程</p>
+</blockquote>
+<p>RocketMQ中的消息生产者都是<code>以生产者组（Producer Group）的形式</code>出现的。生产者组是同一类生产者的集合，这类Producer发送相同Topic类型的消息。<em>一个生产者组可以同时发送<code>多个主题</code>的消息</em>。</p>
+<h3 id="2-2-Consumer"><a href="#2-2-Consumer" class="headerlink" title="2.2 Consumer"></a>2.2 Consumer</h3><p>消息消费者，负责消费消息。一个消息消费者会从Broker服务器中获取到消息，并对消息进行相关业务处理。</p>
+<blockquote>
+<p>例如，QoS系统从MQ中读取日志，并对日志进行解析处理的过程就是消息消费的过程。<br>再如，电商平台的业务系统从MQ中读取到秒杀请求，并对请求进行处理的过程就是消息消费的过程。</p>
+</blockquote>
+<p>RocketMQ中的消息消费者都是以消费者组（Consumer Group）的形式出现的。消费者组是同一类消费者的集合，这类Consumer消费的是同一个Topic类型的消息。消费者组使得在消息消费方面，实现<strong>负载均衡</strong>（将一个Topic中的不同的Queue平均分配给同一个Consumer Group的不同的Consumer，注意，他是对queue的负载均衡，不是将消息负载均衡）和<strong>容错</strong>（一个Consmer挂了，该Consumer Group中的其它Consumer可以接着消费原Consumer消费的Queue）的目标变得非常容易。</p>
+<img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/consumer.png" class="">
+
+<p><code>一个消费者可以消费多个queue，一个queue只能被一个消费者消费</code></p>
+<p>消费者组中Consumer的数量应该小于等于订阅Topic的Queue数量。如果超出Queue数量，则多出的Consumer将不能消费消息。</p>
+<img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/consumer1.png" class="">
+
+<p><em>不过，一个Topic类型的消息可以被多个消费者组同时消费。</em></p>
+<blockquote>
+<p>注意:</p>
+<p>1）消费者组只能消费一个Topic的消息，不能同时消费多个Topic消息<br>2）一个消费者组中的消费者必须订阅完全相同的Topic</p>
+</blockquote>
+<h3 id="2-3-Name-Server"><a href="#2-3-Name-Server" class="headerlink" title="2.3 Name Server"></a>2.3 Name Server</h3><h4 id="2-3-1-功能介绍"><a href="#2-3-1-功能介绍" class="headerlink" title="2.3.1 功能介绍"></a>2.3.1 功能介绍</h4><p>NameServer是一个Broker与Topic路由的注册中心，支持Broker的动态注册与发现。</p>
+<blockquote>
+<p>RocketMQ的思想来自于Kafka，而Kafka是依赖了Zookeeper的。所以，在RocketMQ的早期版本，即在MetaQ v1.0与v2.0版本中，也是依赖于Zookeeper的。从MetaQ v3.0，即RocketMQ开始去掉了Zookeeper依赖，使用了自己的NameServer。</p>
+</blockquote>
+<p>主要包括两个功能：</p>
+<ul>
+<li><p><strong>Broker管理：</strong></p>
+<p>接受Broker集群的注册信息并且保存下来作为路由信息的基本数据；提供心跳检测机制，检查Broker是否还存活。</p>
+</li>
+<li><p><strong>路由信息管理：</strong></p>
+<p>每个NameServer中都保存着Broker集群的整个路由信息和用于客户端查询的队列信息。Producer和Conumser通过NameServer可以获取整个Broker集群的路由信息，从而进行消息的投递和消费。</p>
+</li>
+</ul>
+<h4 id="2-3-2-路由注册"><a href="#2-3-2-路由注册" class="headerlink" title="2.3.2 路由注册"></a>2.3.2 路由注册</h4><p>NameServer通常也是以集群的方式部署，不过，NameServer是无状态的，即NameServer集群中的各个节点间是无差异的，各节点间相互不进行信息通讯。那各节点中的数据是如何进行数据同步的呢？在Broker节点启动时，轮询NameServer列表，与每个NameServer节点建立长连接，发起注册请求。在NameServer内部维护着⼀个Broker列表，用来动态存储Broker的信息。<strong>NameServer集群之间没有数据通讯。</strong></p>
+<blockquote>
+<p>注意，这是与其它像zk、Eureka、Nacos等注册中心不同的地方。</p>
+<p>这种NameServer的无状态方式，有什么优缺点：</p>
+<p>优点：NameServer集群搭建简单，扩容简单。</p>
+<p>缺点：对于Broker，必须明确指出所有NameServer地址。否则未指出的将不会去注册。也正因为如此，NameServer并不能随便扩容。因为，若Broker不重新配置，新增的NameServer对于Broker来说是不可见的，其不会向这个NameServer进行注册。</p>
+</blockquote>
+<p>Broker节点为了证明自己是活着的，为了维护与NameServer间的长连接，会将最新的信息以心跳包的方式上报给NameServer，每30秒发送一次心跳。心跳包中包含 BrokerId、Broker地址(IP+Port)、Broker名称、Broker所属集群名称等等 。NameServer在接收到心跳包后，会更新心跳时间戳，记录这个Broker的最新存活时间。</p>
+<h4 id="2-3-3-路由剔除"><a href="#2-3-3-路由剔除" class="headerlink" title="2.3.3 路由剔除"></a>2.3.3 路由剔除</h4><p>由于Broker关机、宕机或网络抖动等原因，NameServer没有收到Broker的心跳，NameServer可能会将其从Broker列表中剔除。NameServer中有⼀个定时任务，每隔10秒就会扫描⼀次Broker表，查看每一个Broker的最新心跳时间戳距离当前时间是否超过120秒，如果超过，则会判定Broker失效，然后将其从Broker列表中剔除。</p>
+<blockquote>
+<p>扩展：<br>对于RocketMQ日常运维工作，例如Broker升级，需要停掉Broker的工作。OP需要怎么做？</p>
+<p>OP需要将Broker的读写权限禁掉。一旦client(Consumer或Producer)向broker发送请求，都会收到broker的NO_PERMISSION响应，然后client会进行对其它Broker的重试。当OP观察到这个Broker没有流量后，再关闭它，实现Broker从NameServer的移除。</p>
+<p>OP：运维工程师<br>SRE: Site Reliability Engineer，现场可靠性工程师</p>
+</blockquote>
+<h4 id="2-3-4-路由发现"><a href="#2-3-4-路由发现" class="headerlink" title="2.3.4 路由发现"></a>2.3.4 路由发现</h4><p><code>RocketMQ的路由发现采用的是Pull模型</code>。当Topic路由信息出现变化时，NameServer不会主动推送给客户端，而是客户端定时拉取主题最新的路由。默认客户端每30秒会拉取一次最新的路由。</p>
+<blockquote>
+<p>扩展：<br>1）Push模型：<br>推送模型。其实时性较好，是一个“发布-订阅”模型，需要维护一个长连接。而长连接的维护是需要资源成本。该模型适合于的场景：实时性要求较高Client数量不多，Server数据变化较频繁<br>2）Pull模型：<br>拉取模型。存在的问题是，实时性较差。<br>3）Long Polling模型：<br>长轮询模型。其是对Push与Pull模型的整合，充分利用了这两种模型的优势，屏蔽了它们的劣势。（客户端请求服务端消息，如果没有，保存30s的长连接，期间有消息就返回；30s后就关闭长连接，不断重复该过程）</p>
+</blockquote>
+<h4 id="2-3-5-客户端NameServer选择策略"><a href="#2-3-5-客户端NameServer选择策略" class="headerlink" title="2.3.5 客户端NameServer选择策略"></a>2.3.5 客户端NameServer选择策略</h4><blockquote>
+<p><em>这里的客户端指的是Producer与Consumer</em></p>
+</blockquote>
+<p>客户端在配置时必须要写上NameServer集群的地址，那么客户端到底连接的是哪个NameServer节点呢？</p>
+<p>客户端首先会生产一个随机数，然后再与NameServer节点数量取模，此时得到的就是所要连接的节点索引，然后就会进行连接。如果连接失败，则会采用round-robin策略，逐个尝试着去连接其它节点。首先采用的是<code>随机策略</code>进行的选择，失败后采用的是<code>轮询策略</code>。</p>
+<blockquote>
+<p>扩展：Zookeeper Client是如何选择Zookeeper Server的？</p>
+<p>简单来说就是，经过两次shuffle（打散zkserver列表），然后选择第一台Zookeeper Server。</p>
+<p>详细说就是，将配置文件中的zk server地址进行第一次shuffle，然后随机选择一个。这个选择出的一般都是一个hostname。然后获取到该hostname对应的所有ip，再对这些ip进行第二次shuffle，从shuffle过的结果中取第一个server地址进行连接。</p>
+</blockquote>
+<h3 id="2-4-Broker"><a href="#2-4-Broker" class="headerlink" title="2.4 Broker"></a>2.4 Broker</h3><h4 id="2-4-1-功能介绍"><a href="#2-4-1-功能介绍" class="headerlink" title="2.4.1 功能介绍"></a>2.4.1 功能介绍</h4><p>Broker充当着 <em>消息中转角色，负责存储消息、转发消息</em>。Broker在RocketMQ系统中负责接收并存储从生产者发送来的消息，同时为消费者的拉取请求作准备。Broker同时也存储着消息相关的元数据，包括消费者组消费进度偏移offset、主题、队列等。</p>
+<blockquote>
+<p>Kafka 0.8版本之后，offset是存放在Broker中的，之前版本是存放在Zookeeper中的。</p>
+</blockquote>
+<h4 id="2-4-2-模块构成"><a href="#2-4-2-模块构成" class="headerlink" title="2.4.2 模块构成"></a>2.4.2 模块构成</h4><img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/broker.png" class="" title="Broker功能模块示意图">
+
+<ul>
+<li><p><strong>Remoting Module</strong>：整个Broker的实体，负责处理来自clients端的请求。而这个Broker实体则由以下模块构成。</p>
+</li>
+<li><p><strong>Client Manager</strong>：客户端管理器。负责接收、解析客户端(Producer/Consumer)请求，管理客户端。例如，维护Consumer的Topic订阅信息</p>
+</li>
+<li><p><strong>Store Service</strong>：存储服务。提供方便简单的API接口，处理消息存储到物理硬盘和消息查询功能。</p>
+</li>
+<li><p><strong>HA Service</strong>：高可用服务，提供Master Broker 和 Slave Broker之间的数据同步功能。</p>
+</li>
+<li><p><strong>Index Service</strong>：索引服务。根据特定的Message key，对投递到Broker的消息进行索引服务，同时也提供根据Message Key对消息进行快速查询的功能。</p>
+</li>
+</ul>
+<h4 id="2-4-3-集群部署"><a href="#2-4-3-集群部署" class="headerlink" title="2.4.3 集群部署"></a>2.4.3 集群部署</h4><img src="/2021/11/16/RocketMQ%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/construct.png" class="">
+
+<p>为了增强Broker性能与吞吐量，Broker一般都是以集群形式出现的。各集群节点中可能存放着相同Topic的不同Queue。不过，这里有个问题，如果某Broker节点宕机，如何保证数据不丢失呢？其解决方案是，将每个Broker集群节点进行横向扩展，即将Broker节点再建为一个HA集群，解决单点问题。</p>
+<p>Broker节点集群是一个主从集群，即集群中具有Master与Slave两种角色。Master负责处理读写操作请求，Slave负责对Master中的数据进行备份(平常操作都是操作Master)。当Master挂掉了，Slave则会自动切换为Master去工作。所以这个Broker集群是主备集群。一个Master可以包含多个Slave，但一个Slave只能隶属于一个Master。Master与Slave 的对应关系是通过指定相同的BrokerName、不同的BrokerId 来确定的。BrokerId为0表示Master，非0表示Slave。每个Broker与NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有NameServer。</p>
+<h3 id="2-5-工作流程"><a href="#2-5-工作流程" class="headerlink" title="2.5 工作流程"></a>2.5 工作流程</h3><h4 id="2-5-1-具体流程"><a href="#2-5-1-具体流程" class="headerlink" title="2.5.1 具体流程"></a>2.5.1 具体流程</h4><ol>
+<li>启动NameServer，NameServer启动后开始监听端口，等待Broker、Producer、Consumer连接。</li>
+<li>启动Broker时，Broker会与所有的NameServer建立并保持长连接，然后每30秒向NameServer定时发送心跳包。(注册)</li>
+<li>发送消息前，可以先创建Topic，创建Topic时需要指定该Topic要存储在哪些Broker上，当然，在创建Topic时也会将Topic与Broker的关系写入到NameServer中。不过，这步是可选的，也可以在发送消息时自动创建Topic。</li>
+<li>Producer发送消息，启动时先跟NameServer集群中的其中一台建立长连接，并从NameServer中获取路由信息，即当前发送的Topic消息的Queue与Broker的地址（IP+Port）的映射关系。然后根据算法策略从队选择一个Queue，与队列所在的Broker建立长连接从而向Broker发消息。当然，在获取到路由信息后，Producer会首先将路由信息缓存到本地，再每30秒从NameServer更新一次路由信息。</li>
+<li>Consumer跟Producer类似，跟其中一台NameServer建立长连接，获取其所订阅Topic的路由信息，然后根据算法策略从路由信息中获取到其所要消费的Queue，然后直接跟Broker建立长连接，开始消费其中的消息。Consumer在获取到路由信息后，同样也会每30秒从NameServer更新一次路由信息。不过不同于Producer的是，Consumer还会向Broker发送心跳，以确保Broker的存活状态。</li>
+</ol>
 
     </div>
 
@@ -293,7 +434,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/11/15/RocketMQ%E6%A6%82%E8%BF%B0/" rel="prev" title="MQ概述">
+                <a href="/2021/11/15/MQ%E6%A6%82%E8%BF%B0/" rel="prev" title="MQ概述">
                   <i class="fa fa-chevron-left"></i> MQ概述
                 </a>
             </div>
