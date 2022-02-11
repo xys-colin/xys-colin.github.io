@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -306,6 +306,104 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="xys-colin">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xys-colin的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">RocketMQ工作原理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-19 09:06:44" itemprop="dateCreated datePublished" datetime="2022-01-19T09:06:44+08:00">2022-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-11 20:46:48" itemprop="dateModified" datetime="2022-02-11T20:46:48+08:00">2022-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RocketMQ/" itemprop="url" rel="index"><span itemprop="name">RocketMQ</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RocketMQ/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、消息的生产"><a href="#一、消息的生产" class="headerlink" title="一、消息的生产"></a>一、消息的生产</h2><h3 id="1-1-消息的生产过程"><a href="#1-1-消息的生产过程" class="headerlink" title="1.1 消息的生产过程"></a>1.1 消息的生产过程</h3><p>Producer可以将消息写入到某Broker中的某Queue中，其经历了如下过程：</p>
+<ul>
+<li>Producer发送消息之前，会先向NameServer发出获取消息Topic的路由信息的请求</li>
+<li>NameServer返回该Topic的路由表及Broker列表</li>
+<li>Producer根据代码中指定的Queue选择策略，从Queue列表中选出一个队列，用于后续存储消息</li>
+<li>Produer对消息做一些特殊处理，例如，消息本身超过4M，则会对其进行压缩</li>
+<li>Producer向选择出的Queue所在的Broker发出RPC请求，将消息发送到选择出的Queue</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/RocketMQ%E9%9B%86%E7%BE%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,7 +435,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-11 15:48:41" itemprop="dateModified" datetime="2022-02-11T15:48:41+08:00">2022-02-11</time>
+      <time title="修改时间：2022-02-11 15:54:56" itemprop="dateModified" datetime="2022-02-11T15:54:56+08:00">2022-02-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -364,111 +462,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="一、集群搭建理论"><a href="#一、集群搭建理论" class="headerlink" title="一、集群搭建理论"></a>一、集群搭建理论</h2><img src="/2021/11/18/RocketMQ%E9%9B%86%E7%BE%A4/broker_cluster.png" class="">
-
-<h3 id="1-1-数据复制与刷盘策略"><a href="#1-1-数据复制与刷盘策略" class="headerlink" title="1.1 数据复制与刷盘策略"></a>1.1 数据复制与刷盘策略</h3><img src="/2021/11/18/RocketMQ%E9%9B%86%E7%BE%A4/flush.png" class="">
-
-<h4 id="1-1-1-复制策略"><a href="#1-1-1-复制策略" class="headerlink" title="1.1.1 复制策略"></a>1.1.1 复制策略</h4><p>复制策略是Broker的Master与Slave间的数据同步方式。分为同步复制与异步复制：</p>
-<ul>
-<li><p><code>同步复制</code>：<em>消息写入master后，master会等待slave同步数据成功后才向producer返回成功ACK</em></p>
-</li>
-<li><p><code>异步复制</code>：<em>消息写入master后，master立即向producer返回成功ACK，无需等待slave同步数据成功</em></p>
-<blockquote>
-<p>异步复制策略会降低系统的写入延迟，RT变小，提高了系统的吞吐量</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="1-1-2-刷盘策略"><a href="#1-1-2-刷盘策略" class="headerlink" title="1.1.2 刷盘策略"></a>1.1.2 刷盘策略</h4><p>刷盘策略指的是broker中消息的<code>落盘方式</code>，即<code>消息发送到broker内存后消息持久化到磁盘的方式</code>。分为同步刷盘与异步刷盘:</p>
-<ul>
-<li><code>同步刷盘</code>：<em>当消息持久化到broker的<code>磁盘后</code>才算是消息写入成功。</em></li>
-<li><code>异步刷盘</code>：<em>当消息写入到broker的<code>内存后</code>即表示消息写入成功，无需等待消息持久化到磁盘。</em></li>
-</ul>
-<blockquote>
-<p>1）异步刷盘策略会降低系统的写入延迟，RT变小，提高了系统的吞吐量<br>2）消息写入到Broker的内存，一般是写入到了PageCache<br>3）对于异步 刷盘策略，消息会写入到PageCache后立即返回成功ACK。但并不会立即做落盘操作，而是当PageCache到达一定量时会自动进行落盘。</p>
-</blockquote>
-<h3 id="1-2-Broker集群模式"><a href="#1-2-Broker集群模式" class="headerlink" title="1.2 Broker集群模式"></a>1.2 Broker集群模式</h3><p>根据Broker集群中各个节点间关系的不同，Broker集群可以分为以下几类：</p>
-<h4 id="1-2-1-单Master"><a href="#1-2-1-单Master" class="headerlink" title="1.2.1 单Master"></a>1.2.1 单Master</h4><p>只有一个broker（其本质上就不能称为集群）。这种方式也只能是在测试时使用，生产环境下不能使用，因为存在单点问题。</p>
-<h4 id="1-2-2-多Master"><a href="#1-2-2-多Master" class="headerlink" title="1.2.2 多Master"></a>1.2.2 多Master</h4><p>broker集群仅由多个master构成，不存在Slave。同一Topic的各个Queue会平均分布在各个master节点上。</p>
-<ul>
-<li><strong>优点</strong>：配置简单，单个Master宕机或重启维护对应用无影响，在磁盘配置为RAID10时，即使机器<br>宕机不可恢复情况下，由于RAID10磁盘非常可靠，消息也不会丢（异步刷盘丢失少量消息，同步<br>刷盘一条不丢），性能最高；</li>
-<li><strong>缺点</strong>：单台机器宕机期间，这台机器上未被消费的消息在机器恢复之前不可订阅（不可消费），消息实时性会受到影响</li>
-</ul>
-<blockquote>
-<p>以上优点的前提是，这些Master都配置了RAID磁盘阵列。如果没有配置，一旦出现某Master宕机，则会发生大量消息丢失的情况。</p>
-</blockquote>
-<h4 id="1-2-3-多Master多Slave模式-异步复制"><a href="#1-2-3-多Master多Slave模式-异步复制" class="headerlink" title="1.2.3 多Master多Slave模式-异步复制"></a>1.2.3 多Master多Slave模式-异步复制</h4><p>broker集群由多个master构成，每个master又配置了多个slave（在配置了RAID磁盘阵列的情况下，一个master一般配置一个slave即可）。master与slave的关系是主备关系，即master负责处理消息的读写请求，而slave仅负责消息的备份与master宕机后的角色切换。</p>
-<p>异步复制即前面所讲的<code>复制策略</code>中的<code>异步复制策略</code>，即消息写入master成功后，master立即向producer返回成功ACK，无需等待slave同步数据成功。</p>
-<p>该模式的最大特点之一是，当master宕机后slave能够<code>自动切换</code>为master。不过由于slave从master的同步具有短暂的延迟（毫秒级），所以当master宕机后，这种异步复制方式可能会存在少量消息的丢失问题。</p>
-<blockquote>
-<p><em>Slave从Master同步的延迟越短，其可能丢失的消息就越少</em></p>
-<p>对于Master的RAID磁盘阵列；若使用的也是异步复制策略，同样也存在延迟问题，同样也可能会丢失消息。但RAID阵列的秘诀是微秒级的（因为是由硬盘支持的），所以其丢失的数据量会更少。</p>
-</blockquote>
-<h4 id="1-2-4-多Master多Slave模式-同步双写"><a href="#1-2-4-多Master多Slave模式-同步双写" class="headerlink" title="1.2.4 多Master多Slave模式-同步双写"></a>1.2.4 多Master多Slave模式-同步双写</h4><p>该模式是<code>多Master多Slave模式</code>的<code>同步复制</code>实现。所谓<code>同步双写</code>，指的是消息写入master成功后，master会等待slave同步数据成功后才向producer返回成功ACK，即master与slave都要写入成功后才会返回成功ACK，也即<code>双写</code>。</p>
-<p>该模式与<code>异步复制模式</code>相比，优点是消息的安全性更高，不存在消息丢失的情况。但单个消息的RT(响应时间)略高，从而导致性能要略低（大约低10%）。</p>
-<p>该模式存在一个大的问题：对于目前的版本，Master宕机后，Slave不会自动切换到Master（致命问题）。</p>
-<h4 id="1-2-5-最佳实践"><a href="#1-2-5-最佳实践" class="headerlink" title="1.2.5 最佳实践"></a>1.2.5 最佳实践</h4><p>一般会为Master配置RAID10磁盘阵列，然后再为其配置一个Slave。即利用了RAID10磁盘阵列的高<br>效、安全性，又解决了可能会影响订阅的问题。——-多M多S+RAID10阵列</p>
-<blockquote>
-<p>1）RAID磁盘阵列的效率要高于Master-Slave集群。因为RAID是硬件支持的。也正因为如此，所以RAID阵列的搭建成本较高。</p>
-<p>2）多Master+RAID阵列，与多Master多Slave集群的区别是什么？</p>
-<ul>
-<li>多Master+RAID阵列，其仅仅可以保证数据不丢失，即不影响消息写入，但其可能会影响到<br>消息的订阅。但其执行效率要远高于<code>多Master多Slave集群</code></li>
-<li>多Master多Slave集群，其不仅可以保证数据不丢失，也不会影响消息写入。其运行效率要低<br>于<code>多Master+RAID阵列</code></li>
-</ul>
-</blockquote>
-<h2 id="二、集群搭建实践"><a href="#二、集群搭建实践" class="headerlink" title="二、集群搭建实践"></a>二、集群搭建实践</h2><h3 id="2-1-集群架构"><a href="#2-1-集群架构" class="headerlink" title="2.1 集群架构"></a>2.1 集群架构</h3><p>这里要搭建一个双主双从异步复制的Broker集群。为了方便，这里使用了两台主机来完成集群的搭建。这两台主机的功能与broker角色分配如下表。</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">主机名/IP</th>
-<th align="center">IP</th>
-<th align="center">功能</th>
-<th align="center">BROKER角色</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">rocketmqOS1</td>
-<td align="center">192.168.109.104</td>
-<td align="center">NameServer + Broker</td>
-<td align="center">Master1 + Slave2</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">rocketmqOS2</td>
-<td align="center">192.168.109.105</td>
-<td align="center">NameServer + Broker</td>
-<td align="center">Master2 + Slave1</td>
-</tr>
-</tbody></table>
-<h3 id="2-2-克隆生成rocketmqOS1"><a href="#2-2-克隆生成rocketmqOS1" class="headerlink" title="2.2 克隆生成rocketmqOS1"></a>2.2 克隆生成rocketmqOS1</h3><p>克隆主机，并修改配置。指定主机名为rocketmqOS1</p>
-<h3 id="2-3-修改rocketmqOS1配置文件"><a href="#2-3-修改rocketmqOS1配置文件" class="headerlink" title="2.3 修改rocketmqOS1配置文件"></a>2.3 修改rocketmqOS1配置文件</h3><ol>
-<li><p>要修改的配置文件在rocketMQ解压目录的<code>conf/2m-2s-async</code>目录中</p>
-<img src="/2021/11/18/RocketMQ%E9%9B%86%E7%BE%A4/mqOS1.png" class=""></li>
-<li><p><strong>修改broker-a.properties</strong>———-Master机，将该配置文件内容修改为如下：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定整个broker集群的名称，或者说是RocketMQ集群的名称</span></span><br><span class="line"><span class="attr">brokerClusterName</span>=<span class="string">DefaultCluster</span></span><br><span class="line"><span class="comment"># 指定master-slave集群的名称。一个RocketMQ集群可以包含多个master-slave集群</span></span><br><span class="line"><span class="attr">brokerName</span>=<span class="string">broker-a</span></span><br><span class="line"><span class="comment"># master的brokerId为0</span></span><br><span class="line"><span class="attr">brokerId</span>=<span class="string">0</span></span><br><span class="line"><span class="comment"># 指定删除消息存储过期文件的时间为凌晨4点</span></span><br><span class="line"><span class="attr">deleteWhen</span>=<span class="string">04</span></span><br><span class="line"><span class="comment"># 指定未发生更新的消息存储文件的保留时长为48小时，48小时后过期，将会被删除</span></span><br><span class="line"><span class="attr">fileReservedTime</span>=<span class="string">48</span></span><br><span class="line"><span class="comment"># 指定当前broker为异步复制master</span></span><br><span class="line"><span class="attr">brokerRole</span>=<span class="string">ASYNC_MASTER</span></span><br><span class="line"><span class="comment"># 指定刷盘策略为异步刷盘</span></span><br><span class="line"><span class="attr">flushDiskType</span>=<span class="string">ASYNC_FLUSH</span></span><br><span class="line"><span class="comment"># 指定Name Server的地址</span></span><br><span class="line"><span class="attr">namesrvAddr</span>=<span class="string">192.168.109.104:9876;192.168.109.105:9876</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>修改broker-b-s.properties</strong>——-Salve机,，将该配置文件内容修改为如下：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">brokerClusterName</span>=<span class="string">DefaultCluster</span></span><br><span class="line"><span class="comment"># 指定这是另外一个master-slave集群</span></span><br><span class="line"><span class="attr">brokerName</span>=<span class="string">broker-b</span></span><br><span class="line"><span class="comment"># slave的brokerId为非0</span></span><br><span class="line"><span class="attr">brokerId</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">deleteWhen</span>=<span class="string">04</span></span><br><span class="line"><span class="attr">fileReservedTime</span>=<span class="string">48</span></span><br><span class="line"><span class="comment"># 指定当前broker为slave</span></span><br><span class="line"><span class="attr">brokerRole</span>=<span class="string">SLAVE</span></span><br><span class="line"><span class="attr">flushDiskType</span>=<span class="string">ASYNC_FLUSH</span></span><br><span class="line"><span class="attr">namesrvAddr</span>=<span class="string">192.168.109.104:9876;192.168.109.105:9876</span></span><br><span class="line"><span class="comment"># 指定Broker对外提供服务的端口，即Broker与producer与consumer通信的端口。默认10911。由于当前主机同时充当着master1与slave2，而前面的master1使用的是默认端口。这里需要将这两个端口加以区分，以区分出master1与slave2</span></span><br><span class="line"><span class="attr">listenPort</span>=<span class="string">11911</span></span><br><span class="line"><span class="comment"># 指定消息存储相关的路径。默认路径为~/store目录。由于当前主机同时充当着master1与slave2，master1使用的是默认路径，这里就需要再指定一个不同路径</span></span><br><span class="line"><span class="attr">storePathRootDir</span>=<span class="string">~/store-s</span></span><br><span class="line"><span class="attr">storePathCommitLog</span>=<span class="string">~/store-s/commitlog</span></span><br><span class="line"><span class="attr">storePathConsumeQueue</span>=<span class="string">~/store-s/consumequeue</span></span><br><span class="line"><span class="attr">storePathIndex</span>=<span class="string">~/store-s/index</span></span><br><span class="line"><span class="attr">storeCheckpoint</span>=<span class="string">~/store-s/checkpoint</span></span><br><span class="line"><span class="attr">abortFile</span>=<span class="string">~/store-s/abort</span></span><br></pre></td></tr></table></figure></li>
-<li><p>其他配置，除了以上配置外，这些配置文件中还可以设置其它属性。</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定整个broker集群的名称，或者说是RocketMQ集群的名称</span></span><br><span class="line"><span class="attr">brokerClusterName</span>=<span class="string">rocket-MS</span></span><br><span class="line"><span class="comment">#指定master-slave集群的名称。一个RocketMQ集群可以包含多个master-slave集群</span></span><br><span class="line"><span class="attr">brokerName</span>=<span class="string">broker-a</span></span><br><span class="line"><span class="comment">#0 表示 Master，&gt;0 表示 Slave</span></span><br><span class="line"><span class="attr">brokerId</span>=<span class="string">0</span></span><br><span class="line"><span class="comment">#多个nameServer地址，分号分割</span></span><br><span class="line"><span class="attr">namesrvAddr</span>=<span class="string">nameserver1:9876;nameserver2:9876</span></span><br><span class="line"><span class="comment">#默认为新建Topic所创建的队列数</span></span><br><span class="line"><span class="attr">defaultTopicQueueNums</span>=<span class="string">4</span></span><br><span class="line"><span class="comment">#是否允许 Broker 自动创建Topic，建议生产环境中关闭</span></span><br><span class="line"><span class="attr">autoCreateTopicEnable</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#是否允许 Broker 自动创建订阅组，建议生产环境中关闭</span></span><br><span class="line"><span class="attr">autoCreateSubscriptionGroup</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#Broker对外提供服务的端口，即Broker与producer与consumer通信的端口</span></span><br><span class="line"><span class="attr">listenPort</span>=<span class="string">10911</span></span><br><span class="line"><span class="comment">#HA高可用监听端口，即Master与Slave间通信的端口，默认值为listenPort+1</span></span><br><span class="line"><span class="attr">haListenPort</span>=<span class="string">10912</span></span><br><span class="line"><span class="comment">#指定删除消息存储过期文件的时间为凌晨4点</span></span><br><span class="line"><span class="attr">deleteWhen</span>=<span class="string">04</span></span><br><span class="line"><span class="comment">#指定未发生更新的消息存储文件的保留时长为48小时，48小时后过期，将会被删除</span></span><br><span class="line"><span class="attr">fileReservedTime</span>=<span class="string">48</span></span><br><span class="line"><span class="comment">#指定commitLog目录中每个文件的大小，默认1G</span></span><br><span class="line"><span class="attr">mapedFileSizeCommitLog</span>=<span class="string">1073741824</span></span><br><span class="line"><span class="comment">#指定ConsumeQueue的每个Topic的每个Queue文件中可以存放的消息数量，默认30w条</span></span><br><span class="line"><span class="attr">mapedFileSizeConsumeQueue</span>=<span class="string">300000</span></span><br><span class="line"><span class="comment">#在清除过期文件时，如果该文件被其他线程所占用（引用数大于0，比如读取消息），此时会阻止此次删除任务，同时在第一次试图删除该文件时记录当前时间戳。该属性则表示从第一次拒绝删除后开始计时，该文件最多可以保留的时长。在此时间内若引用数仍不为0，则删除仍会被拒绝。不过时间到后，文件将被强制删除</span></span><br><span class="line"><span class="attr">destroyMapedFileIntervalForcibly</span>=<span class="string">120000</span></span><br><span class="line"><span class="comment">#指定commitlog、consumequeue所在磁盘分区的最大使用率，超过该值，则需立即清除过期文</span></span><br><span class="line"><span class="attr">件</span></span><br><span class="line"><span class="attr">diskMaxUsedSpaceRatio</span>=<span class="string">88</span></span><br><span class="line"><span class="comment">#指定store目录的路径，默认在当前用户主目录中</span></span><br><span class="line"><span class="attr">storePathRootDir</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store</span></span><br><span class="line"><span class="comment">#commitLog目录路径</span></span><br><span class="line"><span class="attr">storePathCommitLog</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store/commitlog</span></span><br><span class="line"><span class="comment">#consumeueue目录路径</span></span><br><span class="line"><span class="attr">storePathConsumeQueue</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store/consumequeue</span></span><br><span class="line"><span class="comment">#index目录路径</span></span><br><span class="line"><span class="attr">storePathIndex</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store/index</span></span><br><span class="line"><span class="comment">#checkpoint文件路径</span></span><br><span class="line"><span class="attr">storeCheckpoint</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store/checkpoint</span></span><br><span class="line"><span class="comment">#abort文件路径</span></span><br><span class="line"><span class="attr">abortFile</span>=<span class="string">/usr/local/rocketmq-all-4.5.0/store/abort</span></span><br><span class="line"><span class="comment">#指定消息的最大大小</span></span><br><span class="line"><span class="attr">maxMessageSize</span>=<span class="string">65536</span></span><br><span class="line"><span class="comment">#Broker的角色</span></span><br><span class="line"><span class="comment"># - ASYNC_MASTER 异步复制Master</span></span><br><span class="line"><span class="comment"># - SYNC_MASTER 同步双写Master</span></span><br><span class="line"><span class="comment"># - SLAVE</span></span><br><span class="line"><span class="attr">brokerRole</span>=<span class="string">SYNC_MASTER</span></span><br><span class="line"><span class="comment">#刷盘策略</span></span><br><span class="line"><span class="comment"># - ASYNC_FLUSH 异步刷盘</span></span><br><span class="line"><span class="comment"># - SYNC_FLUSH 同步刷盘</span></span><br><span class="line"><span class="attr">flushDiskType</span>=<span class="string">SYNC_FLUSH</span></span><br><span class="line"><span class="comment">#发消息线程池数量</span></span><br><span class="line"><span class="attr">sendMessageThreadPoolNums</span>=<span class="string">128</span></span><br><span class="line"><span class="comment">#拉消息线程池数量</span></span><br><span class="line"><span class="attr">pullMessageThreadPoolNums</span>=<span class="string">128</span></span><br><span class="line"><span class="comment">#强制指定本机IP，需要根据每台机器进行修改。官方介绍可为空，系统默认自动识别，但多网卡时IP地址可能读取错误</span></span><br><span class="line"><span class="attr">brokerIP1</span>=<span class="string">192.168.3.105</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2-4-克隆生成rocketmqOS2"><a href="#2-4-克隆生成rocketmqOS2" class="headerlink" title="2.4 克隆生成rocketmqOS2"></a>2.4 克隆生成rocketmqOS2</h3><p>克隆rocketmqOS1主机，并修改配置。指定主机名为rocketmqOS2。</p>
-<h3 id="2-5-修改rocketmqOS2配置文件"><a href="#2-5-修改rocketmqOS2配置文件" class="headerlink" title="2.5 修改rocketmqOS2配置文件"></a>2.5 修改rocketmqOS2配置文件</h3><p>对于rocketmqOS2主机，同样需要修改rocketMQ解压目录的conf目录的子目录<code>2m-2s-async</code>中的两个配置文件。</p>
-<ol>
-<li><p><strong>修改broker-b.properties</strong>—–Master机</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">brokerClusterName</span>=<span class="string">DefaultCluster</span></span><br><span class="line"><span class="attr">brokerName</span>=<span class="string">broker-b</span></span><br><span class="line"><span class="attr">brokerId</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">deleteWhen</span>=<span class="string">04</span></span><br><span class="line"><span class="attr">fileReservedTime</span>=<span class="string">48</span></span><br><span class="line"><span class="attr">brokerRole</span>=<span class="string">ASYNC_MASTER</span></span><br><span class="line"><span class="attr">flushDiskType</span>=<span class="string">ASYNC_FLUSH</span></span><br><span class="line"><span class="attr">namesrvAddr</span>=<span class="string">192.168.109.104:9876;192.168.109.105:9876</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>修改broker-a-s.properties</strong>———Salve机</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">brokerClusterName</span>=<span class="string">DefaultCluster</span></span><br><span class="line"><span class="attr">brokerName</span>=<span class="string">broker-a</span></span><br><span class="line"><span class="attr">brokerId</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">deleteWhen</span>=<span class="string">04</span></span><br><span class="line"><span class="attr">fileReservedTime</span>=<span class="string">48</span></span><br><span class="line"><span class="attr">brokerRole</span>=<span class="string">SLAVE</span></span><br><span class="line"><span class="attr">flushDiskType</span>=<span class="string">ASYNC_FLUSH</span></span><br><span class="line"><span class="attr">namesrvAddr</span>=<span class="string">192.168.109.104:9876;192.168.109.105:9876</span></span><br><span class="line"><span class="attr">listenPort</span>=<span class="string">11911</span></span><br><span class="line"><span class="attr">storePathRootDir</span>=<span class="string">~/store-s</span></span><br><span class="line"><span class="attr">storePathCommitLog</span>=<span class="string">~/store-s/commitlog</span></span><br><span class="line"><span class="attr">storePathConsumeQueue</span>=<span class="string">~/store-s/consumequeue</span></span><br><span class="line"><span class="attr">storePathIndex</span>=<span class="string">~/store-s/index</span></span><br><span class="line"><span class="attr">storeCheckpoint</span>=<span class="string">~/store-s/checkpoint</span></span><br><span class="line"><span class="attr">abortFile</span>=<span class="string">~/store-s/abort</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2-6-启动服务器"><a href="#2-6-启动服务器" class="headerlink" title="2.6 启动服务器"></a>2.6 启动服务器</h3><h4 id="2-6-1-启动NameServer集群"><a href="#2-6-1-启动NameServer集群" class="headerlink" title="2.6.1 启动NameServer集群"></a>2.6.1 启动NameServer集群</h4><p>分别启动rocketmqOS1与rocketmqOS2两个主机中的NameServer。启动命令完全相同。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup sh bin/mqnamesrv &amp;</span><br><span class="line">tail -f ~/logs/rocketmqlogs/namesrv.log</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-6-2-启动Master"><a href="#2-6-2-启动Master" class="headerlink" title="2.6.2 启动Master"></a>2.6.2 启动Master</h4><p>分别启动rocketmqOS1与rocketmqOS2两个主机中的broker master。注意，它们指定所要加载的配置<br>文件是不同的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nohup sh bin/mqbroker -c conf/2m-2s-async/broker-a.properties &amp;</span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br><span class="line"></span><br><span class="line">nohup sh bin/mqbroker -c conf/2m-2s-async/broker-b.properties &amp;</span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-6-3-启动Slave"><a href="#2-6-3-启动Slave" class="headerlink" title="2.6.3 启动Slave"></a>2.6.3 启动Slave</h4><p>分别启动rocketmqOS1与rocketmqOS2两个主机中的broker slave。注意，它们指定所要加载的配置<br>文件是不同的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nohup sh bin/mqbroker -c conf/2m-2s-async/broker-b-s.properties &amp;</span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br><span class="line"></span><br><span class="line">nohup sh bin/mqbroker -c conf/2m-2s-async/broker-a-s.properties &amp;</span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/18/RocketMQ%E9%9B%86%E7%BE%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
