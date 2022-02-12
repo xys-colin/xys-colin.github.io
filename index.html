@@ -337,7 +337,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-11 20:46:48" itemprop="dateModified" datetime="2022-02-11T20:46:48+08:00">2022-02-11</time>
+      <time title="修改时间：2022-02-12 16:40:02" itemprop="dateModified" datetime="2022-02-12T16:40:02+08:00">2022-02-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -985,7 +985,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-28 00:04:41" itemprop="dateModified" datetime="2022-01-28T00:04:41+08:00">2022-01-28</time>
+      <time title="修改时间：2022-02-12 16:40:54" itemprop="dateModified" datetime="2022-02-12T16:40:54+08:00">2022-02-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1012,26 +1012,7 @@
 <li>SATA、USB、SAS等磁盘接口都是使用SCSI模块来驱动的，因此这些接口的磁盘设备文件名都是/dev/sd[a-p]的格式，设备文件名是根据Linux内核检测磁盘的顺序来命名。</li>
 <li>磁盘由碟片、机械手臂、磁头和主轴马达所组成。</li>
 <li>碟片上面可细分出<strong>扇区</strong>（磁道中被半径分割的一个个扇形）与<strong>磁道</strong>（每一个圆形就是一个磁道）两种单位，其中扇区的物理大小设计有两种，分别是512字节和4k字节。</li>
-<li>所有碟片的同一个磁道我们称为<strong>柱面</strong>，通常那是文件系统的最小单位，也就是分区的最小单位。<h3 id="MBR-MS-DOS-分区表格式与限制"><a href="#MBR-MS-DOS-分区表格式与限制" class="headerlink" title="MBR(MS-DOS)分区表格式与限制"></a>MBR(MS-DOS)分区表格式与限制</h3><blockquote>
-<p>早期的Linux系统为了兼容Windows的磁盘，使用的是MBR(Master Boot Record,主引导记录)的方式来处理引导程序与分区表，启动引导程序记录区与分区表则通常放在磁盘的第一个扇区，这个扇区通常是512字节的大小（旧磁盘扇区都是512字节）</p>
-</blockquote>
-</li>
-<li>第一个扇区的512字节主要有两个东西：<ul>
-<li> <strong>主引导记录（Master Boot Record，MBR）</strong>：可以安装启动引导程序的地方，有446字节。</li>
-<li><strong>分区表</strong>：记录整块硬盘分区的状态，有64字节。由于分区表所在的区块仅有64字节容量，因此最多仅能有四组记录区，每组记录区记录了该区段的启动与结束的柱面号码。</li>
-</ul>
-</li>
-<li>这四个分区的记录被称为主要或扩展分区</li>
-<li>扩展分区的目的是使用额外的扇区来记录分区的信息，扩展分区本身并不能被拿来格式化。扩展分区可以继续切出分区，就称为逻辑分区</li>
-<li>能够被格式化后作为数据存取的分区是主要分区与逻辑分区，扩展分区无法格式化。</li>
-<li>逻辑分区的数量依操作系统而不同，在Linux系统中SATA硬盘已经可以突破63个以上的分区限制。</li>
-<li>当分区超过4个分区是，一定要有扩展分区，而且必须将所有剩下的空间都分配给扩展分区，然后再以逻辑分区的方式来划分扩展分区的空间。分区的序号1-4号是保留给主要/扩展分区的，因此第一个逻辑分区一定是由5号开始。</li>
-<li>MBR分区表的限制有以下问题<ul>
-<li>操作系统无法使用2.2TB以上的磁盘容量</li>
-<li>MBR仅有一个区块，若被破坏后，经常无法或很难恢复</li>
-<li>MBR内的存放启动引导程序的区块仅446字节，无法存储较多的程序代码。</li>
-</ul>
-</li>
+<li>所有碟片的同一个磁道我们称为<strong>柱面</strong>，通常那是文件系统的最小单位，也就是分区的最小单位。</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -1066,7 +1047,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/20/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/20/Git%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -1079,7 +1060,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/11/20/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">git学习笔记</a>
+          <a href="/2019/11/20/Git%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">git学习笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1141,7 +1122,7 @@
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/11/20/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              <a class="btn" href="/2019/11/20/Git%E4%BD%BF%E7%94%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
