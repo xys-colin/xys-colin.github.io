@@ -36,8 +36,19 @@
 <meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/indexHeader.png">
 <meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/indexes.png">
 <meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/indexUnit.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/process.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/broadcast.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/cluster.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/consumeProcess.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/average.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/circuit.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/hash.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/house.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance1.png">
+<meta property="og:image" content="http://example.com/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance2.png">
 <meta property="article:published_time" content="2022-01-19T01:06:44.000Z">
-<meta property="article:modified_time" content="2022-02-12T08:40:02.377Z">
+<meta property="article:modified_time" content="2022-02-19T14:23:24.172Z">
 <meta property="article:author" content="xys-colin">
 <meta property="article:tag" content="RocketMQ">
 <meta property="article:tag" content="MQ">
@@ -160,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E4%BA%A7"><span class="nav-number">1.</span> <span class="nav-text">一、消息的生产</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E4%BA%A7%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 消息的生产过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Queue%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Queue选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 轮询算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E6%9C%80%E5%B0%8F%E6%8A%95%E9%80%92%E5%BB%B6%E8%BF%9F%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 最小投递延迟算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">二、消息的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-commitlog%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 commitlog文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 目录与文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E6%B6%88%E6%81%AF%E5%8D%95%E5%85%83"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 消息单元</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-consumequeue"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 consumequeue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 目录与文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E7%B4%A2%E5%BC%95%E6%9D%A1%E7%9B%AE"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 索引条目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E6%B6%88%E6%81%AF%E5%86%99%E5%85%A5"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 消息写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E6%B6%88%E6%81%AF%E6%8B%89%E5%8F%96"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 消息拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 性能提升</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81indexFile"><span class="nav-number">3.</span> <span class="nav-text">三、indexFile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%B4%A2%E5%BC%95%E6%9D%A1%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 索引条目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-indexFile%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 indexFile的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 查询流程</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E4%BA%A7"><span class="nav-number">1.</span> <span class="nav-text">一、消息的生产</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E4%BA%A7%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 消息的生产过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Queue%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Queue选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 轮询算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E6%9C%80%E5%B0%8F%E6%8A%95%E9%80%92%E5%BB%B6%E8%BF%9F%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 最小投递延迟算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">二、消息的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-commitlog%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 commitlog文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 目录与文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E6%B6%88%E6%81%AF%E5%8D%95%E5%85%83"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 消息单元</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-consumequeue"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 consumequeue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 目录与文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E7%B4%A2%E5%BC%95%E6%9D%A1%E7%9B%AE"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 索引条目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E6%B6%88%E6%81%AF%E5%86%99%E5%85%A5"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 消息写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E6%B6%88%E6%81%AF%E6%8B%89%E5%8F%96"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 消息拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 性能提升</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81indexFile"><span class="nav-number">3.</span> <span class="nav-text">三、indexFile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%B4%A2%E5%BC%95%E6%9D%A1%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 索引条目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-indexFile%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 indexFile的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 查询流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E6%B6%88%E8%B4%B9"><span class="nav-number">4.</span> <span class="nav-text">四、消息的消费</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%8E%B7%E5%8F%96%E6%B6%88%E8%B4%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 获取消费类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-%E6%8B%89%E5%8F%96%E5%BC%8F%E6%B6%88%E8%B4%B9"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 拉取式消费</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-%E6%8E%A8%E9%80%81%E5%BC%8F%E6%B6%88%E8%B4%B9"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 推送式消费</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-%E5%AF%B9%E6%AF%94"><span class="nav-number">4.1.3.</span> <span class="nav-text">4.1.3 对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%B6%88%E8%B4%B9%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 消费模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-%E5%B9%BF%E6%92%AD%E6%B6%88%E8%B4%B9"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 广播消费</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-%E9%9B%86%E7%BE%A4%E6%B6%88%E8%B4%B9"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 集群消费</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-%E6%B6%88%E6%81%AF%E8%BF%9B%E5%BA%A6%E4%BF%9D%E5%AD%98"><span class="nav-number">4.2.3.</span> <span class="nav-text">4.2.3 消息进度保存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Rebalance%E6%9C%BA%E5%88%B6"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Rebalance机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-%E4%BB%80%E4%B9%88%E6%98%AFRebalance"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1 什么是Rebalance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-Reblance%E9%99%90%E5%88%B6"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.3.2 Reblance限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-3-Rebalance%E5%8D%B1%E5%AE%B3"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.3.3 Rebalance危害</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-Rebalance%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.3.4 Rebalance产生的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-5-Rebalance%E8%BF%87%E7%A8%8B"><span class="nav-number">4.3.5.</span> <span class="nav-text">4.3.5 Rebalance过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Queue%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Queue分配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-1-%E5%B9%B3%E5%9D%87%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1 平均分配策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-2-%E7%8E%AF%E5%BD%A2%E5%B9%B3%E5%9D%87%E7%AD%96%E7%95%A5"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2 环形平均策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-3-%E4%B8%80%E8%87%B4%E6%80%A7Hash%E7%AD%96%E7%95%A5"><span class="nav-number">4.4.3.</span> <span class="nav-text">4.4.3 一致性Hash策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-4-%E5%90%8C%E6%9C%BA%E6%88%BF%E7%AD%96%E7%95%A5"><span class="nav-number">4.4.4.</span> <span class="nav-text">4.4.4 同机房策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-5-%E5%AF%B9%E6%AF%94"><span class="nav-number">4.4.5.</span> <span class="nav-text">4.4.5 对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E8%87%B3%E5%B0%91%E4%B8%80%E6%AC%A1%E5%8E%9F%E5%88%99"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 至少一次原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AE%A2%E9%98%85%E5%85%B3%E7%B3%BB%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">五、订阅关系的一致性</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-12 16:40:02" itemprop="dateModified" datetime="2022-02-12T16:40:02+08:00">2022-02-12</time>
+      <time title="修改时间：2022-02-19 22:23:24" itemprop="dateModified" datetime="2022-02-19T22:23:24+08:00">2022-02-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -404,7 +415,7 @@
 <p>indexFile中最复杂的是Slots与Indexes间的关系。在实际存储时，Indexes是在Slots后面的，但为了便于理解，将它们的关系展示为如下形式：</p>
 <img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/indexes.png" class="">
 
-<p><code>key的hash值 % 500w</code>的结果即为slot槽位，然后将该slot值修改为该index索引单元的indexNo，根据这个indexNo可以计算出该index单元在indexFile中的位置。不过，该取模结果的重复率是很高的，为了解决该问题，在每个index索引单元中增加了preIndexNo，用于指定该slot中当前index索引单元的前一个index索引单元。而slot中始终存放的是其下最新的index索引单元的indexNo，这样的话，只要找到了slot就可以找到其最新的index索引单元，而通过这个index索引单元就可以找到其之前的所有index索引单元。</p>
+<p><code>key的hash值 % 500w</code>的结果即为slot槽位，然后将该slot值修改为该index索引单元的indexNo，根据这个indexNo可以计算出该index单元在indexFile中的位置。不过，该<code>取模结果的重复率是很高</code>的，为了解决该问题，在每个index索引单元中增加了<code>preIndexNo</code>，<code>用于指定该slot中当前index索引单元的前一个index索引单元</code>。而<code>slot中始终存放的是其下最新的index索引单元的indexNo</code>，这样的话，只要找到了slot就可以找到其最新的index索引单元，而通过这个index索引单元就可以找到其之前的所有index索引单元。</p>
 <blockquote>
 <p>indexNo是一个在indexFile中的流水号，从 0 开始依次递增。即在一个indexFile中所有indexNo是以此递增的。indexNo在index索引单元中是没有体现的，其是通过indexes中依次数出来的。</p>
 </blockquote>
@@ -417,7 +428,133 @@
 <li>timeDiff：当前key对应消息的存储时间与当前indexFile创建时间的时间差</li>
 <li>preIndexNo：当前slot下当前index索引单元的前一个index索引单元的indexNo</li>
 </ul>
-<h3 id="3-2-indexFile的创建"><a href="#3-2-indexFile的创建" class="headerlink" title="3.2 indexFile的创建"></a>3.2 indexFile的创建</h3><h3 id="3-3-查询流程"><a href="#3-3-查询流程" class="headerlink" title="3.3 查询流程"></a>3.3 查询流程</h3>
+<h3 id="3-2-indexFile的创建"><a href="#3-2-indexFile的创建" class="headerlink" title="3.2 indexFile的创建"></a>3.2 indexFile的创建</h3><p>indexFile的文件名为当前文件<code>被创建时的时间戳</code>。这个时间戳有什么用处呢？</p>
+<p>根据业务key进行查询时，查询条件除了key之外，还需要指定一个要查询的时间戳，表示要查询不大于该时间戳的最新的消息，即<code>查询指定时间戳之前存储的最新消息</code>。这个时间戳文件名可以简化查询，<code>提高查询效率</code>。具体后面会详细讲解。</p>
+<p>indexFile文件是何时创建的？其<code>创建的条件（时机）</code>有两个：</p>
+<ul>
+<li><p>当第一条带key的消息发送来后，系统发现没有indexFile，此时会创建第一个indexFile文件</p>
+</li>
+<li><p>当一个indexFile中挂载的index索引单元数量超出2000w个时，会创建新的indexFile。当带key的消息发送到来后，系统会找到最新的indexFile，并从其indexHeader的最后4字节中读取到indexCount。若indexCount &gt;= 2000w时，会创建新的indexFile。</p>
+<blockquote>
+<p>由于可以推算出，<code>一个indexFile的最大大小是：(40 + 500w * 4 + 2000w * 20)字节</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-3-查询流程"><a href="#3-3-查询流程" class="headerlink" title="3.3 查询流程"></a>3.3 查询流程</h3><p>当消费者通过业务key来查询相应的消息时，其需要经过一个相对较复杂的查询流程。不过，在分析查询流程之前，首先要清楚几个定位计算式子：</p>
+<blockquote>
+<p>计算指定消息key的slot槽位序号：<br>slot槽位序号 = key的hash % 500w         (式子1)</p>
+<p>计算槽位序号为n的slot在indexFile中的起始位置：<br>slot(n)位置 = 40 + (n - 1) * 4         (式子2)</p>
+<p>计算indexNo为m的indexs在indexFile中的位置：<br>index(m)位置 = 40 + 500w * 4 + (m - 1) * 20   (式子3)</p>
+<p>40为indexFile中indexHeader的字节数，500w * 4 是所有slots所占的字节数</p>
+</blockquote>
+<p>具体查询流程如下：</p>
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/process.png" class="">
+
+<h2 id="四、消息的消费"><a href="#四、消息的消费" class="headerlink" title="四、消息的消费"></a>四、消息的消费</h2><p>消费者从Broker中获取消息的方式有两种：pull拉取方式和push推动方式。消费者组对于消息消费的模式又分为两种：集群消费Clustering和广播消费Broadcasting。</p>
+<h3 id="4-1-获取消费类型"><a href="#4-1-获取消费类型" class="headerlink" title="4.1 获取消费类型"></a>4.1 获取消费类型</h3><h4 id="4-1-1-拉取式消费"><a href="#4-1-1-拉取式消费" class="headerlink" title="4.1.1 拉取式消费"></a>4.1.1 拉取式消费</h4><p>Consumer主动从Broker中拉取消息，主动权由Consumer控制。一旦获取了批量消息，就会启动消费过程。不过，该方式的<code>实时性较弱</code>，即Broker中有了新的消息时消费者并不能及时发现并消费。</p>
+<blockquote>
+<p><em>由于拉取时间间隔是由用户指定的，所以在设置该间隔时需要注意平稳：</em></p>
+<p><em>间隔太短，空请求比例会增加(无用功)；间隔太长，消息的实时性太差</em></p>
+</blockquote>
+<h4 id="4-1-2-推送式消费"><a href="#4-1-2-推送式消费" class="headerlink" title="4.1.2 推送式消费"></a>4.1.2 推送式消费</h4><p>该模式下Broker收到数据后会主动推送给Consumer。该获取方式一般<code>实时性较高</code>。</p>
+<p>该获取方式是典型的发布-订阅模式，即Consumer向其关联的Queue注册了监听器，一旦发现有新的消息到来就会触发回调的执行，回调方法是Consumer去Queue中拉取消息。而这些都是基于Consumer与Broker间的<code>长连接的</code>。<code>长连接的维护是需要消耗系统资源的</code>。</p>
+<h4 id="4-1-3-对比"><a href="#4-1-3-对比" class="headerlink" title="4.1.3 对比"></a>4.1.3 对比</h4><ul>
+<li><strong>pull</strong>：需要应用去实现对关联Queue的遍历，<code>实时性差</code>；但<code>便于应用控制消息的拉取</code></li>
+<li><strong>push</strong>：封装了对关联Queue的遍历，<code>实时性强</code>，但会<code>占用较多的系统资源</code></li>
+</ul>
+<h3 id="4-2-消费模式"><a href="#4-2-消费模式" class="headerlink" title="4.2 消费模式"></a>4.2 消费模式</h3><h4 id="4-2-1-广播消费"><a href="#4-2-1-广播消费" class="headerlink" title="4.2.1 广播消费"></a>4.2.1 广播消费</h4><img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/broadcast.png" class="">
+
+<p>广播消费模式下，相同Consumer Group的每个Consumer实例<code>都接收同一个Topic的全量消息</code>。即每条消息都会被发送到Consumer Group中的每个Consumer。</p>
+<h4 id="4-2-2-集群消费"><a href="#4-2-2-集群消费" class="headerlink" title="4.2.2 集群消费"></a>4.2.2 集群消费</h4><img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/cluster.png" class="">
+
+<p>集群消费模式下，相同Consumer Group的每个Consumer实例<code>平均分摊</code>同一个Topic的消息。即每条消息只会被发送到Consumer Group中的某个Consumer。</p>
+<h4 id="4-2-3-消息进度保存"><a href="#4-2-3-消息进度保存" class="headerlink" title="4.2.3 消息进度保存"></a>4.2.3 消息进度保存</h4><ul>
+<li>广播模式：消费进度保存在consumer端。因为广播模式下consumer group中每个consumer都会消费所有消息，但它们的消费进度是不同。所以consumer各自保存各自的消费进度。</li>
+<li>集群模式：消费进度保存在broker中。consumer group中的所有consumer共同消费同一个Topic中的消息，同一条消息只会被消费一次。消费进度会参与到了消费的负载均衡中，故消费进度是需要共享的。</li>
+</ul>
+<p><em>下图是broker中存放的各个Topic的各个Queue的消费进度</em>。</p>
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/consumeProcess.png" class="">
+
+<h3 id="4-3-Rebalance机制"><a href="#4-3-Rebalance机制" class="headerlink" title="4.3 Rebalance机制"></a>4.3 Rebalance机制</h3><p><code>Rebalance机制</code>讨论的前提是：<code>集群消费</code>。</p>
+<h4 id="4-3-1-什么是Rebalance"><a href="#4-3-1-什么是Rebalance" class="headerlink" title="4.3.1 什么是Rebalance"></a>4.3.1 什么是Rebalance</h4><p>Rebalance即再均衡，指的是，将⼀个Topic下的多个Queue在同⼀个Consumer Group中的多个Consumer间进行重新分配的过程。</p>
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance.png" class="">
+
+<p>Rebalance机制的本意是为了<code>提升消息的并行消费能力</code>。例如，⼀个Topic下5个队列，在只有1个消费者的情况下，这个消费者将负责消费这5个队列的消息。如果此时我们增加⼀个消费者，那么就可以给其中⼀个消费者分配2个队列，给另⼀个分配3个队列，从而提升消息的并行消费能力。</p>
+<h4 id="4-3-2-Reblance限制"><a href="#4-3-2-Reblance限制" class="headerlink" title="4.3.2 Reblance限制"></a>4.3.2 Reblance限制</h4><p>由于⼀个队列最多分配给⼀个消费者，因此当某个消费者组下的消费者实例数量大于队列的数量时，多余的消费者实例将分配不到任何队列。</p>
+<h4 id="4-3-3-Rebalance危害"><a href="#4-3-3-Rebalance危害" class="headerlink" title="4.3.3 Rebalance危害"></a>4.3.3 Rebalance危害</h4><p>Rebalance的在提升消费能力的同时，也带来一些问题：</p>
+<ul>
+<li><p><strong>消费暂停</strong>：在只有一个Consumer时，其负责消费所有队列；在新增了一个Consumer后会触发Rebalance的发生。此时原Consumer就需要暂停部分队列的消费，等到这些队列分配给新的Consumer后，这些暂停消费的队列才能继续被消费。</p>
+</li>
+<li><p><strong>消费重复</strong>：Consumer 在消费新分配给自己的队列时，必须接着之前Consumer 提交的消费进度的offset继续消费。然而默认情况下，offset是异步提交的，这个异步性导致提交到Broker的offset与Consumer实际消费的消息并不一致。这个不一致的差值就是可能会重复消费的消息。</p>
+<blockquote>
+<p>同步提交：</p>
+<p>consumer提交了其消费完毕的一批消息的offset给broker后，需要等待broker的成功ACK。当收到ACK后，consumer才会继续获取并消费下一批消息。在等待ACK期间，consumer是阻塞的。</p>
+<p>异步提交：</p>
+<p>consumer提交了其消费完毕的一批消息的offset给broker后，不需要等待broker的成功ACK。consumer可以直接获取并消费下一批消息。</p>
+<p>对于一次性读取消息的数量，需要根据具体业务场景选择一个相对均衡的是很有必要的。数量过大，系统性能提升了，但产生重复消费的消息数量可能会增加；数量过小，系统性能会下降，但被重复消费的消息数量可能会减少。</p>
+</blockquote>
+</li>
+<li><p><strong>消费突刺</strong>：由于Rebalance可能导致重复消费，如果需要重复消费的消息过多，或者因为Rebalance暂停时间过长从而导致积压了部分消息。<code>消息积压</code>，那么有可能会导致在Rebalance结束之后<code>瞬间需要消费很多消息</code>。</p>
+</li>
+</ul>
+<h4 id="4-3-4-Rebalance产生的原因"><a href="#4-3-4-Rebalance产生的原因" class="headerlink" title="4.3.4 Rebalance产生的原因"></a>4.3.4 Rebalance产生的原因</h4><p>导致Rebalance产生的原因，无非就两个：消费者所<code>订阅Topic的Queue数量发生变化</code>，或消费者组中<code>消费者的数量发生变化</code>。</p>
+<ol>
+<li><p>Queue数量发生变化的场景：</p>
+<p>Broker扩容或缩容</p>
+<p>Broker升级运维</p>
+<p>Broker与NameServer间的网络异常</p>
+<p>Queue扩容或缩容</p>
+</li>
+<li><p>消费者数量发生变化的场景：</p>
+<p>Consumer Group扩容或缩容</p>
+<p>Consumer升级运维</p>
+<p>Consumer与NameServer间网络异常</p>
+</li>
+</ol>
+<h4 id="4-3-5-Rebalance过程"><a href="#4-3-5-Rebalance过程" class="headerlink" title="4.3.5 Rebalance过程"></a>4.3.5 Rebalance过程</h4><p>在Broker中维护着多个Map集合，这些集合中动态存放着当前Topic中Queue的信息、Consumer Group中Consumer实例的信息。一旦发现消费者所订阅的Queue数量发生变化，或消费者组中消费者的数量发生变化，立即向Consumer Group中的每个实例发出Rebalance通知。</p>
+<blockquote>
+<p>TopicConfigManager：key是topic名称，value是TopicConfig。TopicConfig中维护着该Topic中所有Queue的数据。</p>
+<p>ConsumerManager：key是Consumser Group Id，value是ConsumerGroupInfo。ConsumerGroupInfo中维护着该Group中所有Consumer实例数据。</p>
+<p>ConsumerOffsetManager：key为Topic与订阅该Topic的Group的组合,即topic@group，value是一个内层Map。内层Map的key为QueueId，内层Map的value为该Queue的消费进度offset。</p>
+</blockquote>
+<p>Consumer实例在接收到通知后会采用<code>Queue分配算法</code>自己获取到相应的Queue，即由<code>Consumer实例自主进行Rebalance</code>。</p>
+<h3 id="4-4-Queue分配算法"><a href="#4-4-Queue分配算法" class="headerlink" title="4.4 Queue分配算法"></a>4.4 Queue分配算法</h3><p>一个Topic中的Queue只能由Consumer Group中的一个Consumer进行消费，而一个Consumer可以同时消费多个Queue中的消息。那么Queue与Consumer间的配对关系是如何确定的，即Queue要分配给哪个Consumer进行消费，也是有算法策略的。常见的有四种策略。这些策略是通过在创建Consumer时的构造器传进去的。</p>
+<h4 id="4-4-1-平均分配策略"><a href="#4-4-1-平均分配策略" class="headerlink" title="4.4.1 平均分配策略"></a>4.4.1 平均分配策略</h4><img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/average.png" class="">
+
+<p>该算法是要根据<code>avg = QueueCount / ConsumerCount</code>的计算结果进行分配的。如果能够整除，则按顺序将avg个Queue逐个分配Consumer；如果不能整除，则将多余出的Queue按照Consumer顺序逐个分配。</p>
+<h4 id="4-4-2-环形平均策略"><a href="#4-4-2-环形平均策略" class="headerlink" title="4.4.2 环形平均策略"></a>4.4.2 环形平均策略</h4><p>环形平均算法是指，根据<code>消费者的顺序，依次在由queue队列组成的环形图中逐个分配</code>。</p>
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/circuit.png" class="">
+
+<blockquote>
+<p>该算法<code>不用事先计算</code>，每个Consumer需要分配几个Queue，直接一个一个分即可。</p>
+</blockquote>
+<h4 id="4-4-3-一致性Hash策略"><a href="#4-4-3-一致性Hash策略" class="headerlink" title="4.4.3 一致性Hash策略"></a>4.4.3 一致性Hash策略</h4><img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/hash.png" class="">
+
+<p>该算法会将consumer的hash值作为Node节点存放到hash环上，然后将queue的hash值也放到hash环上，通过<code>顺时针方向</code>，距离queue最近的那个consumer就是该queue要分配的consumer。</p>
+<blockquote>
+<p>该算法存在的问题：<code>分配不均</code>。</p>
+</blockquote>
+<h4 id="4-4-4-同机房策略"><a href="#4-4-4-同机房策略" class="headerlink" title="4.4.4 同机房策略"></a>4.4.4 同机房策略</h4><img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/house.png" class="">
+
+<p>该算法会<code>根据queue的部署机房位置和consumer的位置</code>，过滤出当前consumer相同机房的queue。然后<code>按照平均分配策略或环形平均策略对同机房queue进行分配</code>。如果没有同机房queue，则按照平均分配策略或环形平均策略对所有queue进行分配。</p>
+<h4 id="4-4-5-对比"><a href="#4-4-5-对比" class="headerlink" title="4.4.5 对比"></a>4.4.5 对比</h4><p><strong>一致性hash算法存在的问题</strong>：</p>
+<p>两种平均分配策略的分配效率较高，一致性hash策略的较低。因为一致性hash算法较复杂。另外，一致性hash策略分配的结果也很大可能上存在不平均的情况。</p>
+<p><strong>一致性hash算法存在的意义</strong>：</p>
+<p>其可以<code>有效减少由于消费者组扩容或缩容所带来的大量的Rebalance</code>。避免减少Rebalance</p>
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance1.png" class="">
+
+<img src="/2022/01/19/RocketMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/rebalance2.png" class="">
+
+<p><strong>一致性hash算法的应用场景</strong>：</p>
+<p>Consumer数量变化较频繁的场景。</p>
+<h3 id="4-5-至少一次原则"><a href="#4-5-至少一次原则" class="headerlink" title="4.5 至少一次原则"></a>4.5 至少一次原则</h3><p>RocketMQ有一个原则：每条消息必须要被<code>成功消费</code>一次。</p>
+<p>那么什么是成功消费呢？Consumer在消费完消息后会向其消费进度记录器提交其消费消息的offset，offset被成功记录到记录器中，那么这条消费就被成功消费了。</p>
+<blockquote>
+<p>什么是消费进度记录器？</p>
+<p>对于<code>广播消费模式</code>来说，<code>Consumer</code>本身就是<code>消费进度记录器</code>。</p>
+<p>对于<code>集群消费模式来</code>说，<code>Broker</code>是<code>消费进度记录器</code>。</p>
+</blockquote>
+<h2 id="五、订阅关系的一致性"><a href="#五、订阅关系的一致性" class="headerlink" title="五、订阅关系的一致性"></a>五、订阅关系的一致性</h2>
     </div>
 
     
