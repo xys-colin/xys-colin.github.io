@@ -22,7 +22,7 @@
 <meta name="description" content="个人技术博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="xys-colin的博客">
-<meta property="og:url" content="http://example.com/archives/2021/10/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="xys-colin的博客">
 <meta property="og:description" content="个人技术博客">
 <meta property="og:locale" content="zh_CN">
@@ -31,14 +31,14 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2021/10/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2021/10/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | xys-colin的博客</title>
+<title>xys-colin的博客</title>
   
 
 
@@ -197,49 +197,117 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner index posts-expand">
+
+    
 
 
+<div class="post-block">
   
   
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 11 篇日志。 继续努力。</span>
-      </div>
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/20/Git%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="xys-colin">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xys-colin的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/11/20/Git%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Git使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-20 11:07:24" itemprop="dateCreated datePublished" datetime="2019-11-20T11:07:24+08:00">2019-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-12 16:45:41" itemprop="dateModified" datetime="2022-02-12T16:45:41+08:00">2022-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一-创建版本库"><a href="#一-创建版本库" class="headerlink" title="一. 创建版本库"></a>一. 创建版本库</h2><ul>
+<li>初始化一个Git仓库：<strong>git init</strong></li>
+<li>添加文件到Git仓库：<ol>
+<li><strong>git add &lt;file&gt;</strong></li>
+<li><strong>git commit</strong></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="二-时光机穿梭"><a href="#二-时光机穿梭" class="headerlink" title="二. 时光机穿梭"></a>二. 时光机穿梭</h2><ul>
+<li>查看工作区状态，文件是否被修改过：<strong>git status</strong></li>
+<li>查看修改的内容：<strong>git diff</strong></li>
+</ul>
+<h3 id="1、版本回退"><a href="#1、版本回退" class="headerlink" title="1、版本回退"></a>1、版本回退</h3><ul>
+<li><strong>HEAD</strong> ：当前版本</li>
+<li><strong>HEAD^</strong> ：上个版本</li>
+<li><strong>git reset –hard commit_id</strong> ：定位版本</li>
+<li><strong>git log</strong> ：穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本</li>
+<li><strong>git reflog</strong> ：要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/20/Git%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-28T16:24:12+08:00"
-              content="2021-10-28">
-          10-28
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/28/ES%E6%8E%A5%E5%8F%A3%E6%93%8D%E4%BD%9C/" itemprop="url">
-            <span itemprop="name">ES接口操作</span>
-          </a>
-      </div>
-
+    <footer class="post-footer">
+        <div class="post-eof"></div>
       
-    </header>
+    </footer>
   </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </div>
   </main>
