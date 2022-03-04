@@ -19,28 +19,32 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="vi与vim：可以将vim视作为vi的高级版本，vi是老式的文本编辑器，vim则是为程序开发者的一项很好用的工具。在Centos7当中，一般账号默认vi已经被vim替换了。 一、vim的使用vim一般分为3中模式：  一般命令模式  打开文件直接进入一般命令模式（默认模式）   编辑模式  命令行模式">
+<meta name="description" content="一、TCP概述 TCP被称为是面向连接的可靠的运输协议，即两个进程之间必须互相发送某些预备报文段，已建立确保数据传输的参数。  TCP连接是一条逻辑连接，其共同状态只保留TCP进程两端中，而不存在中间的网络元素（路由器和链路层交换机）中运行。提供全双工服务（即数据流通是双向的），连接也总是点对点，即在单个发送方与单个接送方之间的连接，所谓的“多播”，对于TCP来说是不可能的。  发送和接送缓存。T">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim程序编辑器">
-<meta property="og:url" content="http://example.com/2022/01/27/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8/index.html">
+<meta property="og:title" content="TCP协议详解">
+<meta property="og:url" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="xys-colin的博客">
-<meta property="og:description" content="vi与vim：可以将vim视作为vi的高级版本，vi是老式的文本编辑器，vim则是为程序开发者的一项很好用的工具。在Centos7当中，一般账号默认vi已经被vim替换了。 一、vim的使用vim一般分为3中模式：  一般命令模式  打开文件直接进入一般命令模式（默认模式）   编辑模式  命令行模式">
+<meta property="og:description" content="一、TCP概述 TCP被称为是面向连接的可靠的运输协议，即两个进程之间必须互相发送某些预备报文段，已建立确保数据传输的参数。  TCP连接是一条逻辑连接，其共同状态只保留TCP进程两端中，而不存在中间的网络元素（路由器和链路层交换机）中运行。提供全双工服务（即数据流通是双向的），连接也总是点对点，即在单个发送方与单个接送方之间的连接，所谓的“多播”，对于TCP来说是不可能的。  发送和接送缓存。T">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-27T12:29:06.624Z">
-<meta property="article:modified_time" content="2022-01-27T16:05:04.088Z">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E7%BC%93%E5%AD%98.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E6%8A%A5%E6%96%87%E6%AE%B5.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7.png">
+<meta property="article:published_time" content="2021-03-25T08:41:39.000Z">
+<meta property="article:modified_time" content="2022-03-04T10:26:57.986Z">
 <meta property="article:author" content="xys-colin">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E7%BC%93%E5%AD%98.png">
 
 
-<link rel="canonical" href="http://example.com/2022/01/27/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8/">
+<link rel="canonical" href="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/01/27/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8/","path":"2022/01/27/vim程序编辑器/","title":"vim程序编辑器"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/","path":"2021/03/25/TCP协议详解/","title":"TCP协议详解"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>vim程序编辑器 | xys-colin的博客</title>
+<title>TCP协议详解 | xys-colin的博客</title>
   
 
 
@@ -148,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81vim%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">一、vim的使用</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81TCP%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、TCP概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二、TCP报文段结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 序号和确认号</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,7 +215,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/27/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -224,7 +228,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vim程序编辑器
+          TCP协议详解
         </h1>
 
         <div class="post-meta-container">
@@ -235,14 +239,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-01-27 20:29:06" itemprop="dateCreated datePublished" datetime="2022-01-27T20:29:06+08:00">2022-01-27</time>
+      <time title="创建时间：2021-03-25 16:41:39" itemprop="dateCreated datePublished" datetime="2021-03-25T16:41:39+08:00">2021-03-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-28 00:05:04" itemprop="dateModified" datetime="2022-01-28T00:05:04+08:00">2022-01-28</time>
+      <time title="修改时间：2022-03-04 18:26:57" itemprop="dateModified" datetime="2022-03-04T18:26:57+08:00">2022-03-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -250,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
         </span>
     </span>
 
@@ -264,20 +268,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>vi与vim：可以将vim视作为vi的高级版本，vi是老式的文本编辑器，vim则是为程序开发者的一项很好用的工具。在Centos7当中，一般账号默认vi已经被vim替换了。</p>
-<h1 id="一、vim的使用"><a href="#一、vim的使用" class="headerlink" title="一、vim的使用"></a>一、vim的使用</h1><p>vim一般分为3中模式：</p>
-<ol>
-<li><p>一般命令模式</p>
+        <h2 id="一、TCP概述"><a href="#一、TCP概述" class="headerlink" title="一、TCP概述"></a>一、TCP概述</h2><ol>
+<li><p>TCP被称为是<strong>面向连接的可靠的运输协议</strong>，即两个进程之间必须互相发送某些预备报文段，已建立确保数据传输的参数。</p>
+</li>
+<li><p>TCP连接是一条逻辑连接，其共同状态只保留TCP进程两端中，而不存在中间的网络元素（路由器和链路层交换机）中运行。提供<strong>全双工服务</strong>（即数据流通是双向的），连接也总是<strong>点对点</strong>，<code>即在单个发送方与单个接送方之间的连接</code>，所谓的“多播”，对于TCP来说是不可能的。</p>
+</li>
+<li><p>发送和接送缓存。TCP可从缓存中取出并放入报文段的数据数量受限于**最大报文段长度(MSS)**，MSS通常由本地主机的最大链路层帧长度(<strong>最大传输单元，MTU</strong>)来设置。</p>
 <blockquote>
-<p>打开文件直接进入一般命令模式（默认模式）</p>
+<p>以太网和链路层协议都具有1500字节的MTU，TCP/IP首部长度通常为40字节，所以MSS的典型值为1460字节。</p>
 </blockquote>
-</li>
-<li><p>编辑模式</p>
-</li>
-<li><p>命令行模式</p>
-</li>
-</ol>
 <span id="more"></span>
+
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E7%BC%93%E5%AD%98.png" class=""></li>
+</ol>
+<h2 id="二、TCP报文段结构"><a href="#二、TCP报文段结构" class="headerlink" title="二、TCP报文段结构"></a>二、TCP报文段结构</h2><p>TCP报文段由首部字段和一个数据字段组成。数据字段包含一块应用数据，TCP的首部一般是20字节（比UDP首部多12个字节）</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E6%8A%A5%E6%96%87%E6%AE%B5.png" class="">
+
+<ul>
+<li><strong>序号字段</strong>和<strong>确认号字段</strong>。用于实现可靠数据传输服务</li>
+<li>16比特的<strong>接送窗口字段</strong>，该字段用于流量控制，指示接收方愿意接受的字节数量。</li>
+<li>4比特的<strong>首部长度字段</strong>，该字段指示以32比特的字为单位的TCP首部长度。由于选项字段的原因，TCP首部的长度是可变的。(通常选项字段为空，所以TCP首部的典型长度为20字节)。</li>
+<li>可选与变长的<strong>选项字段</strong>，该字段用于发送发与接收方协商最大报文段长度时，或在高速网络环境下用作窗口调节因子使用。</li>
+<li>6比特的<strong>标志字段</strong>。<strong>ACK</strong>用于指示该报文段已被成功接送的确认，<strong>RST、SYN和FIN</strong>比特用于连接建立与拆除。</li>
+</ul>
+<h3 id="2-1-序号和确认号"><a href="#2-1-序号和确认号" class="headerlink" title="2.1 序号和确认号"></a>2.1 序号和确认号</h3><p><strong>序号</strong>(Seq)：报文段首字节的字节流的编号</p>
+<p><strong>确认号</strong>(ACK)：期望从另一方接送到的下一个字节的序号，累计确认。</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7.png" class="">
 
     </div>
 
@@ -287,18 +303,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/27/RocketMQ%E5%BA%94%E7%94%A8/" rel="prev" title="RocketMQ应用">
-                  <i class="fa fa-chevron-left"></i> RocketMQ应用
+                <a href="/2019/11/30/Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/" rel="prev" title="Linux文件和目录">
+                  <i class="fa fa-chevron-left"></i> Linux文件和目录
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/10/28/ES%E6%8E%A5%E5%8F%A3%E6%93%8D%E4%BD%9C/" rel="next" title="ES接口操作">
+                  ES接口操作 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

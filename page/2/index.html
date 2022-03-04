@@ -160,16 +160,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -198,6 +198,99 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="xys-colin">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xys-colin的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/" class="post-title-link" itemprop="url">Linux基础认识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-21 22:32:25" itemprop="dateCreated datePublished" datetime="2019-11-21T22:32:25+08:00">2019-11-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-12 16:40:54" itemprop="dateModified" datetime="2022-02-12T16:40:54+08:00">2022-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一-磁盘分区"><a href="#一-磁盘分区" class="headerlink" title="一. 磁盘分区"></a>一. 磁盘分区</h2><ol>
+<li>在Linux系统中，每个设备都被当成一个文件来对待。比如SATA接口的硬盘的文件名即为/dev/sd[a-d]，其中括号内的字母为a-d当中的任意一</li>
+<li>SATA、USB、SAS等磁盘接口都是使用SCSI模块来驱动的，因此这些接口的磁盘设备文件名都是/dev/sd[a-p]的格式，设备文件名是根据Linux内核检测磁盘的顺序来命名。</li>
+<li>磁盘由碟片、机械手臂、磁头和主轴马达所组成。</li>
+<li>碟片上面可细分出<strong>扇区</strong>（磁道中被半径分割的一个个扇形）与<strong>磁道</strong>（每一个圆形就是一个磁道）两种单位，其中扇区的物理大小设计有两种，分别是512字节和4k字节。</li>
+<li>所有碟片的同一个磁道我们称为<strong>柱面</strong>，通常那是文件系统的最小单位，也就是分区的最小单位。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/21/Linux%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
