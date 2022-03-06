@@ -36,8 +36,15 @@
 <meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/GBN%E8%BF%90%E8%A1%8C.png">
 <meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/SR%E7%9A%84%E5%BA%8F%E5%8F%B7%E7%A9%BA%E9%97%B4.png">
 <meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E9%87%8D%E4%BC%A0.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E7%B4%AF%E7%A7%AF%E7%A1%AE%E8%AE%A4%E9%81%BF%E5%85%8D%E9%87%8D%E4%BC%A0.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/rwnd.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/2%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
 <meta property="article:published_time" content="2021-03-25T08:41:39.000Z">
-<meta property="article:modified_time" content="2022-03-05T15:53:11.252Z">
+<meta property="article:modified_time" content="2022-03-06T07:45:50.271Z">
 <meta property="article:author" content="xys-colin">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -159,7 +166,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81TCP%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、TCP概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二、TCP报文段结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 序号和确认号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">3.</span> <span class="nav-text">三、可靠数据传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 可靠数据传输原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E6%9E%84%E5%BB%BA%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 构建可靠数据传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E5%9B%9E%E9%80%80N%E6%AD%A5"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 回退N步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 选择重传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-5-%E5%AF%B9%E6%AF%94GBN%E4%B8%8ESR"><span class="nav-number">3.1.5.</span> <span class="nav-text">3.1.5 对比GBN与SR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-TCP%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 TCP可靠数据传输</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81TCP%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、TCP概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二、TCP报文段结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 序号和确认号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">3.</span> <span class="nav-text">三、可靠数据传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 可靠数据传输原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E6%9E%84%E5%BB%BA%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 构建可靠数据传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E5%9B%9E%E9%80%80N%E6%AD%A5"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 回退N步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 选择重传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-5-%E5%AF%B9%E6%AF%94GBN%E4%B8%8ESR"><span class="nav-number">3.1.5.</span> <span class="nav-text">3.1.5 对比GBN与SR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-TCP%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 TCP可靠数据传输</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E5%B8%B8%E8%A7%81%E9%87%8D%E4%BC%A0%E6%83%85%E5%86%B5"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 常见重传情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E8%B6%85%E6%97%B6%E9%97%B4%E9%9A%94%E5%8A%A0%E5%80%8D"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 超时间隔加倍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 快速重传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-%E6%98%AF%E5%9B%9E%E9%80%80N%E6%AD%A5%E8%BF%98%E6%98%AF%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">3.2.4.</span> <span class="nav-text">3.2.4 是回退N步还是选择重传</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">四、流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81TCP%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">五、TCP连接管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 建立连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 关闭连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-SYN%E6%B4%AA%E6%B3%9B%E6%94%BB%E5%87%BB"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 SYN洪泛攻击</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +260,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-05 23:53:11" itemprop="dateModified" datetime="2022-03-05T23:53:11+08:00">2022-03-05</time>
+      <time title="修改时间：2022-03-06 15:45:50" itemprop="dateModified" datetime="2022-03-06T15:45:50+08:00">2022-03-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -442,7 +449,81 @@
 <li>出错率低：比较适合GBN，出错非常罕见，没有必要用复杂的SR，为罕见的事件做日常的准备和复杂处理</li>
 <li>链路容量大(延迟大、带宽大)：比较适合SR而不是GBN，一点出错代价太大。</li>
 </ul>
-<h3 id="3-2-TCP可靠数据传输"><a href="#3-2-TCP可靠数据传输" class="headerlink" title="3.2 TCP可靠数据传输"></a>3.2 TCP可靠数据传输</h3>
+<h3 id="3-2-TCP可靠数据传输"><a href="#3-2-TCP可靠数据传输" class="headerlink" title="3.2 TCP可靠数据传输"></a>3.2 TCP可靠数据传输</h3><p><strong>TCP在IP不可靠的尽力而为服务之上创建了一种可靠数据传输服务</strong>。TCP的可靠数据传输服务确保一个进程从其接收缓存中读出的数据流是无损坏、无间隙、非冗余和按序的数据流；即该字节流与连接的另一端系统发送的字节流是完全相同。</p>
+<h4 id="3-2-1-常见重传情况"><a href="#3-2-1-常见重传情况" class="headerlink" title="3.2.1 常见重传情况"></a>3.2.1 常见重传情况</h4><img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/TCP%E9%87%8D%E4%BC%A0.png" class="">
+
+<ol>
+<li><p>第一种情况：由于确认丢失而重传</p>
+</li>
+<li><p>第二种情况：报文段100没有重传</p>
+<p>当超时事件发生时，主机A重传序号92的第一个报文段，并重启定时器。只要第二个报文段的ACK在新的超时发生以前到达，则第二个报文段将不会被重传。</p>
+<blockquote>
+<p>前面所说的可靠数据传输技术，假定每一个已发送但未被确认的报文段都有一个定时器相关联，但这种定时器的管理却需要相当大的开销。因此，在TCP协议仅使用<strong>单一的重传定时器</strong>，即使有多个已发送但还未被确认的报文段。所以第二个报文段不会被重传。</p>
+</blockquote>
+</li>
+<li><p>第三种情况：累积确认避免之前的报文段重传</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E7%B4%AF%E7%A7%AF%E7%A1%AE%E8%AE%A4%E9%81%BF%E5%85%8D%E9%87%8D%E4%BC%A0.png" class="">
+
+<p>第一个报文段的确认报文在网络丢失，但在超时事件发生之前主机A收到一个确认号为120的确认报文。主机A因而知道主机B已经收到了序号为119及之前的所有字节;所以主机A不会重传这两个报文段中的任何一个。</p>
+</li>
+</ol>
+<h4 id="3-2-2-超时间隔加倍"><a href="#3-2-2-超时间隔加倍" class="headerlink" title="3.2.2 超时间隔加倍"></a>3.2.2 超时间隔加倍</h4><p>TCP重传具有最小序号的还未被确认的报文段。只是每次TCP重传时都会将下一次的超时间隔设为先前值的两倍。超时间隔在每次重传后会呈现指数型增长。然而，每当定时器在另两个事件（即收到上层应用的数据和收到ACK）中的任意一个启动时，TimeoutInterval由最近的EstimatedRTT值与DevRTT值推算得到。</p>
+<h4 id="3-2-3-快速重传"><a href="#3-2-3-快速重传" class="headerlink" title="3.2.3 快速重传"></a>3.2.3 快速重传</h4><p>超时触发重传存在的问题之一是超时周期可能相对较长。当一个报文段丢失时，这种长超时周期迫使发送方延迟重传丢失的分组，因而增加了端到端时延。幸运的是，发送方通常可在超时事件发生之前通过注意所谓冗余ACK来较好地检测到丟包情况。<strong>冗余ACK</strong> ( duplicate ACK)就是再次确认某个报文段的ACK，而发送方先前已经收到对该报文段的确认。</p>
+<p>因为发送方经常一个接一个地发送大量的报文段，如果一个报文段丢失，就很可能引起许多一个接一个的冗余ACK。如果TCP发送方接收到对相同数据的3个冗余ACK,它把这当作一种指示，说明跟在这个已被确认过3次的报文段之后的报文段已经丢失。一旦收到<strong>3个冗余ACK</strong>, TCP就执行<strong>快速重传</strong>( fast retransmit)，即在该报文段的定时器过期之前重传丢失的报文段。</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0.png" class="">
+
+<h4 id="3-2-4-是回退N步还是选择重传"><a href="#3-2-4-是回退N步还是选择重传" class="headerlink" title="3.2.4 是回退N步还是选择重传"></a>3.2.4 是回退N步还是选择重传</h4><p>TCP确认是累积式的，正确接收但失序的报文段是不会被接收方逐个确认的。TCP发送方仅需维持已发送过但未被确认的字节的最小序号和下一个要发送的字节序号。在这种意义下，TCP看起来更像一个GBN协议。但对TCP提出的一种修改意见是所谓的<strong>选择确认</strong>( selective acknowledgment) ，它允许TCP接收方有选择地确认失序报文段，而不是累积地确认最后一个正确接收的有序报文段。当将该机制与选择重传机制结合起来使用时( 即跳过重传那些已被接收方选择性地确认过的报文段)，TCP看起来就很像我们通常的SR协议。因此，<strong>TCP的差错恢复机制也许最好被分类为GBN协议与SR协议的混合体</strong>。</p>
+<h2 id="四、流量控制"><a href="#四、流量控制" class="headerlink" title="四、流量控制"></a>四、流量控制</h2><p>一条TCP连接的每一侧都有设置缓存。如果某应用程序读取数据时相对缓慢，而发送方发送得太多、太快，发送的数据就会很容易地使该连接的接收缓存溢出。</p>
+<p>TCP为应用程序提供了<strong>流量控制服务</strong>以消除发送方使接收方缓存溢出的可能性。它使发送方的速率和接收方的读取速率相匹配，它与拥塞控制采取的动作非常相似（对发送方遏制），但它们是针对完全不同的原因而采用的措施。</p>
+<p>TCP在连接两端的发送方都各自维护一个<strong>接收窗口变量</strong>（给发送方一个指示——该接收方还有多少可用的缓存空间)，假设主机A通过一条TCP向主机B发送一个大文件，用RcvBuffer来表示缓存大小。还定义一下变量：</p>
+<ul>
+<li>LastByteRead：主机B上的应用进程从缓存读出的数据流的最后一个字节的编号</li>
+<li>LastByteRcvd：从网络中到达的并且已放入主机B接收缓存中的数据流的最后一个字节的编号。</li>
+</ul>
+<p>由于TCP不允许已分配的缓存溢出，下式必须成立：</p>
+<center>LastByteRcvd - LastByteRead <= RcvBuffer</center>
+
+<p>接收窗口用rwnd表示，根据缓存可用空间的数量来设置：</p>
+<center>rwnd = Rcvd - (LastByteRcvd - LastByteRead) </center>
+
+<p>由于该空间是随时间变化的，所以rwnd是动态的。如图所示：</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/rwnd.png" class="">
+
+<blockquote>
+<p>假设主机B的接收缓存已经存满，使得rwnd=0，在将rwnd=0通告给主机A之后，还要假设主机B没有任何数据要发给主机A，此时会发生情况呢？</p>
+<p>主机B上的应用进程将缓存清空，TCP并不向主机A发送带有rwnd新值的新报文段;事实上，TCP仅当在它有数据或有确认要发时才会发送报文段给主机A。这样，主机A不可能知道主机B的接收缓存已经有新的空间了，即主机A被阻塞而不能再发送数据!为了解决这个问题，TCP 规范中要求:<strong>当主机B的接收窗口为0时，主机A继续发送只有一个字节数据的报文段</strong>。这些报文段将会被接收方确认。最终缓存将开始清空，并且确认报文里将包含一个非0的rwnd值。</p>
+</blockquote>
+<p><strong>UDP并不提供流量控制，报文段由于缓存溢出可能在接收方丢失。</strong></p>
+<h2 id="五、TCP连接管理"><a href="#五、TCP连接管理" class="headerlink" title="五、TCP连接管理"></a>五、TCP连接管理</h2><h3 id="5-1-建立连接"><a href="#5-1-建立连接" class="headerlink" title="5.1 建立连接"></a>5.1 建立连接</h3><p>客户机中的TCP会用以下方式与服务器中的TCP建立一条TCP连接：（<strong>三次握手</strong>）</p>
+<ol>
+<li><code>第一步</code>: 客户端的TCP首先向服务器端的TCP发送<code>一个特殊的TCP报文段</code>。该报文段中<code>不包含应用层数据</code>。但是在<strong>报文段的首部中的一个标志位(即SYN比特)被置为1</strong>。因此，这个特殊报文段被称为SYN报文段。另外，客户会随机地选择一个初始序号( client_ isn), 并将此编号放置于该起始的TCP SYN报文段的序号字段中。该报文段会被封装在一个IP数据报中，并发送给服务器。为了避免某些安全性攻击，在适当地随机化选择client_isn。</li>
+<li><code>第二步</code>: 一旦包含TCP SYN报文段的IP数据报到达服务器主机，服务器会从该数据报中提取出TCP SYN报文段，为该TCP连接分配TCP缓存和变量，并向该客户TCP发送允许连接的报文段。(在完成三次握手的第三步之前分配这些缓存和变量，使得TCP易于受到称为SYN洪泛的拒绝服务攻击）这个允许连接的报文段也不包含应用层数据。但是，在报文段的首部却包含3个重要的信息。首先，SYN比特被置为1。其次，该TCP报文段首部的确认号字段被置为client _ isn + 1。最后，服务器选择自己的初始序号(server_ isn)， 并将其放置到TCP报文段首部的序号字段中。该允许连接的报文段被称为SYNACK报文段( SYNACK segment)。</li>
+<li><code>第三步</code>: 在收到SYNACK报文段后，客户也要给该连接分配缓存和变量。客户主机则向服务器发送另外一个报文段；这最后一个报文段对服务器的允许连接的报文段进行了确认(该客户通过将值server_ isn+1放置到TCP报文段首部的确认字段中来完成此项工作)。因为连接已经建立了，所以该SYN比特被置为0。<strong>该三次握手的第三个阶段可以在报文段负载中携带客户到服务器的数据</strong>。</li>
+</ol>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" class="">
+
+<p>Q：在网络中，两次握手建立连接可行吗？</p>
+<p>A：不可行，会带来：1、服务器维持了虚假的连接（半连接）；2、服务器将旧数据当成新数据</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/2%E6%AC%A1%E6%8F%A1%E6%89%8B.png" class="">
+
+<h3 id="5-2-关闭连接"><a href="#5-2-关闭连接" class="headerlink" title="5.2 关闭连接"></a>5.2 关闭连接</h3><p>当连接结束后，主机中的“资源”(即缓存和变量)将被释放。（<strong>四次挥手</strong>）</p>
+<ol>
+<li><p>客户端，服务器分别关闭它自己这一侧的连接：发送FIN=1的TCP段</p>
+</li>
+<li><p>一旦接收到FIN，用ACK回应：收到FIN段，ACK可以和它自己发出的FIN段一起发送。</p>
+</li>
+<li><p>可以处理同时的FIN交换</p>
+<img src="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" class=""></li>
+</ol>
+<p>假设客户应用程序决定要关闭该连接。(注意到服务器也能选择关闭该连接。)这引起客户TCP发送一个带有FIN比特被置为1的TCP报文段，并进入FIN_ WAIT_ 1状态。当处在FIN_ WAIT_ 1状态时，客户TCP等待一个来自服务器的带有确认的TCP报文段。当它收到该报文段时，客户TCP进入FIN WAIT 2状态。当处在FIN <em>WAIT</em> 2状态时，客户等待来自服务器的FIN比特被置为1的另一个报文段;当收到该报文段后，客户TCP对服务器的报文段进行确认，并进人TIME_ WAIT状态。假定ACK丢失，TIME_ WAIT状态使TCP客户重传最后的确认报文。在TIME_ WAIT 状态中所消耗的时间是与具体实现有关的，而典型的值是30秒、1分钟或2分钟。经过等待后，连接就正式关闭，客户端所有资源(包括端口号)将被释放。</p>
+<h3 id="5-3-SYN洪泛攻击"><a href="#5-3-SYN洪泛攻击" class="headerlink" title="5.3 SYN洪泛攻击"></a>5.3 SYN洪泛攻击</h3><p>如果某客户不发送ACK来完成该三次握手的第三步，最终(通常在一分多钟之后)服务器将终止该半开连接并回收资源。这种TCP连接管理协议为经典的DoS攻击即<strong>SYN洪泛攻击</strong>(SYN flood attack)提供了环境。在这种攻击中，攻击者发送大量的TCP SYN报文段，而不完成第三次握手的步骤。这将导致服务器不断为这些半开连接分配资源，导致服务器的连接资源被消耗殆尽。</p>
+<p>现在有一种有效的防御系统称为<strong>SYN cookie</strong>，它的工作方式：</p>
+<ul>
+<li>当服务器接收到一个SYN报文段时，服务器生成一个<strong>初始TCP序列号</strong>，该序列号是SYN报文段的<strong>源和目的IP地址与端口号以及仅有该服务器知道的秘密数的一个复杂函数(散列函数)<strong>。这种精心制作的初始序列号被称为“cookie”。 服务器则发送具有这种</strong>特殊初始序列号的SYNACK分组</strong>。<strong>重要的是，服务器并不记忆该cookie或任何对应于SYN的其他状态信息。</strong></li>
+<li>如果客户是合法的，则它将返回一个ACK报文段。当服务器收到该ACK,需要验证该ACK是与前面发送的某些SYN相对应的。而服务器没有维护有关SYN报文段的记忆，它是借助于cookie 来做到的。前面讲过对于一个合法的ACK，在<strong>确认字段中的值等于在SYNACK字段(此时为cookie值)中的值加1</strong>。服务器则将使用在SYNACK报文段中的源和目的地IP地址与端口号(它们与初始的SYN中的相同)以及秘密数运行相同的散列函数。如果该函数的结果加1与在客户的SYNACK中的确认(cookie) 值相同的话，服务器认为该ACK对应于较早的SYN报文段，因此它是合法的。服务器则生成一个具有套接字的全开的连接。</li>
+<li>如果客户没有返回一个ACK报文段，则初始的SYN并没有对服务器产生危害，因为服务器没有为它分配任何资源。</li>
+</ul>
+
     </div>
 
     
