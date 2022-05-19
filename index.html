@@ -165,11 +165,11 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -232,7 +232,16 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-19 19:38:06 / 修改时间：19:38:39" itemprop="dateCreated datePublished" datetime="2022-05-19T19:38:06+08:00">2022-05-19</time>
+      <time title="创建时间：2022-05-19 19:38:06 / 修改时间：19:44:43" itemprop="dateCreated datePublished" datetime="2022-05-19T19:38:06+08:00">2022-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+        </span>
     </span>
 
   
@@ -253,144 +262,14 @@
 <ul>
 <li>停止docker </li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看docker状态：</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>开机启动</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看docker概要信息</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看docker总体帮助文档</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看docker命令帮助文档</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker 具体命令 --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h3><ul>
-<li>列出本地主机上的镜像</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查询远程仓库是否有某个镜像名字</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search 镜像名称</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下载镜像</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名称[:TAG]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看镜像/容器/数据卷所占的空间</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除镜像</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像id [镜像名称]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除全部镜像</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f $(docker images -qa)</span><br></pre></td></tr></table></figure>
-
-<h3 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h3><ul>
-<li>新建+启动容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] 镜像名称 [COMMAND] [ARG...]</span><br><span class="line">OPTIONS说明（常用）：有些是一个减号，有些是两个减号</span><br><span class="line">--name=<span class="string">&quot;容器新名字&quot;</span>       为容器指定一个名称；</span><br><span class="line">-d: 后台运行容器并返回容器ID，也即启动守护式容器(后台运行)；</span><br><span class="line">-i：以交互模式运行容器，通常与 -t 同时使用；</span><br><span class="line">-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用；也即启动交互式容器(前台有伪终端，等待交互)；</span><br><span class="line">-P: 随机端口映射，大写P</span><br><span class="line">-p: 指定端口映射，小写p</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列出当前所有正在运行的容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker ps [option]</span><br><span class="line">OPTIONS说明（常用）：</span><br><span class="line">-a :列出当前所有正在运行的容器+历史上运行过的</span><br><span class="line">-l :显示最近创建的容器。</span><br><span class="line">-n：显示最近n个创建的容器。</span><br><span class="line">-q :静默模式，只显示容器编号。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>退出容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>（退出容器停止）</span><br><span class="line">ctrl+p+q （退出容器不停止）</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动已停止运行的容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器ID或容器名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重启容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 容器ID或者容器名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>停止容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器ID或者容器名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>强制停止容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> 容器ID或者容器名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除已停止的容器</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器ID</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动守护式容器（后台服务器）</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d 镜像名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看容器日志</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs 容器ID</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看容器内运行的进程</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top 容器ID</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看容器内的细节</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器ID</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>进入正在运行的容器以命令行交互</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器ID [bash]</span><br><span class="line">docker attach 容器ID</span><br></pre></td></tr></table></figure>
-
-<p>​        exec是在容器中打开新的终端，并且可以启动新的进程用exit退出，不会导致容器的停止。</p>
-<p>​        attach直接进入容器启动命令的终端，不会启动新的进程，用exit退出，会导致容器的停止</p>
-<ul>
-<li>从容器内拷贝文件到主机上</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器ID:源资源路径 目的主机路径</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>导入和导出容器</p>
-<ul>
-<li> export导出容器的内容留作为一个tar归档文件，tar包默认在主机当前目录下</li>
-<li> import从tar包中的内容创建一个新的文件系统再导入为镜像</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> 容器ID &gt; 文件名.tar</span><br><span class="line">cat 文件名.tar | docker import -镜像用户/镜像名:镜像版本号</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/19/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
