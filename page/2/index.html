@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -198,6 +198,101 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="xys-colin">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xys-colin的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">TCP协议详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-25 16:41:39" itemprop="dateCreated datePublished" datetime="2021-03-25T16:41:39+08:00">2021-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-16 14:35:47" itemprop="dateModified" datetime="2022-03-16T14:35:47+08:00">2022-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、TCP概述"><a href="#一、TCP概述" class="headerlink" title="一、TCP概述"></a>一、TCP概述</h2><ol>
+<li><p>TCP被称为是<strong>面向连接的可靠的运输协议</strong>，即两个进程之间必须互相发送某些预备报文段，已建立确保数据传输的参数。</p>
+</li>
+<li><p>TCP连接是一条逻辑连接，其共同状态只保留TCP进程两端中，而不存在中间的网络元素（路由器和链路层交换机）中运行。提供<strong>全双工服务</strong>（即数据流通是双向的），连接也总是<strong>点对点</strong>，<code>即在单个发送方与单个接送方之间的连接</code>，所谓的“多播”，对于TCP来说是不可能的。</p>
+</li>
+<li><p>发送和接送缓存。TCP可从缓存中取出并放入报文段的数据数量受限于**最大报文段长度(MSS)**，MSS通常由本地主机的最大链路层帧长度(<strong>最大传输单元，MTU</strong>)来设置。</p>
+<blockquote>
+<p>以太网和链路层协议都具有1500字节的MTU，TCP/IP首部长度通常为40字节，所以MSS的典型值为1460字节。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/25/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
