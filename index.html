@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -207,6 +207,89 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/29/%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92-CompletableFuture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="xys-colin">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xys-colin的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/06/29/%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92-CompletableFuture/" class="post-title-link" itemprop="url">异步编排-CompletableFuture</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-06-29 13:26:09 / 修改时间：16:43:37" itemprop="dateCreated datePublished" datetime="2022-06-29T13:26:09+08:00">2022-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 Java 8 中, 新增加了一个包含 50 个方法左右的类: CompletableFuture，提供了非常强大的Future 的扩展功能，可以帮助我们简化异步编程的复杂性，提供了函数式编程的能力，可以通过回调的方式处理计算结果，并且提供了转换和组合 CompletableFuture 的方法。 CompletableFuture 类实现了 Future 接口，所以你还是可以像以前一样通过<code>get</code>方法阻塞或者轮询的方式获得结果，但是这种方式不推荐使用。</p>
+<p>CompletableFuture 和 FutureTask 同属于 Future 接口的实现类，都可以获取线程的执行结果。</p>
+<img src="/2022/06/29/%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92-CompletableFuture/CompletableFuture.png" class="">
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/29/%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92-CompletableFuture/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/JRS303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +321,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-29 11:34:05" itemprop="dateModified" datetime="2022-06-29T11:34:05+08:00">2022-06-29</time>
+      <time title="修改时间：2022-06-29 13:22:20" itemprop="dateModified" datetime="2022-06-29T13:22:20+08:00">2022-06-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,52 +351,15 @@
 <p>首先，我们需要导入相关依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="常用的校验注解"><a href="#常用的校验注解" class="headerlink" title="常用的校验注解"></a>常用的校验注解</h2><p>这些注解可以用于需要校验的字段上。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Null</span> <span class="comment">//验证对象是否为null </span></span><br><span class="line"><span class="meta">@NotNull</span> <span class="comment">//验证对象是否不为null, 无法查检长度为0的字符串 </span></span><br><span class="line"><span class="meta">@NotBlank</span> <span class="comment">//检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格. </span></span><br><span class="line"><span class="meta">@NotEmpty</span> <span class="comment">//检查约束元素是否为NULL或者是EMPTY.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Booelan检查 </span></span><br><span class="line"><span class="meta">@AssertTrue</span> <span class="comment">//验证 Boolean 对象是否为 true </span></span><br><span class="line"><span class="meta">@AssertFalse</span> <span class="comment">//验证 Boolean 对象是否为 false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//长度检查 </span></span><br><span class="line"><span class="meta">@Size(min=2, max=4)</span> <span class="comment">//验证对象（Array,Collection,Map,String）长度是否在给定的范围之内 </span></span><br><span class="line"><span class="meta">@Length(min=2, max=6)</span> <span class="comment">//验证字符串的长度是否在min和max数值之间</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//日期检查 </span></span><br><span class="line"><span class="meta">@Past</span> <span class="comment">//验证 Date 和 Calendar 对象是否在当前时间之前，验证成立的话被注释的元素一定是一个过去的日期 </span></span><br><span class="line"><span class="meta">@Future</span> <span class="comment">//验证 Date 和 Calendar 对象是否在当前时间之后 ，验证成立的话被注释的元素一定是一个将来的日期 </span></span><br><span class="line"><span class="meta">@Pattern</span> <span class="comment">//验证 String 对象是否符合正则表达式的规则，被注释的元素符合制定的正则表达式，regexp:正则表达式 flags: 指定 Pattern.Flag 的数组，表示正则表达式的相关选项。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数值检查 </span></span><br><span class="line"><span class="comment">//建议使用在Stirng,Integer类型，不建议使用在int类型上，因为表单值为“”时无法转换为int，但可以转换为Stirng为”“,Integer为null </span></span><br><span class="line"><span class="meta">@Min</span> <span class="comment">//验证 Number 和 String 对象是否大等于指定的值 </span></span><br><span class="line"><span class="meta">@Max</span> <span class="comment">//验证 Number 和 String 对象是否小等于指定的值 </span></span><br><span class="line"><span class="meta">@DecimalMax</span> <span class="comment">//被标注的值必须不大于约束中指定的最大值. 这个约束的参数是一个通过BigDecimal定义的最大值的字符串表示.小数存在精度 </span></span><br><span class="line"><span class="meta">@DecimalMin</span> <span class="comment">//被标注的值必须不小于约束中指定的最小值. 这个约束的参数是一个通过BigDecimal定义的最小值的字符串表示.小数存在精度 </span></span><br><span class="line"><span class="meta">@Digits</span> <span class="comment">//验证 Number 和 String 的构成是否合法 </span></span><br><span class="line"><span class="meta">@Digits(integer=,fraction=)</span> <span class="comment">//验证字符串是否是符合指定格式的数字，interger指定整数精度，fraction指定小数精度。 </span></span><br><span class="line"><span class="meta">@Range(min=, max=)</span> <span class="comment">//被指定的元素必须在合适的范围内 </span></span><br><span class="line"><span class="meta">@Range(min=10000,max=50000,message=”range.bean.wage”)</span> </span><br><span class="line"><span class="meta">@Valid</span> <span class="comment">//递归的对关联对象进行校验, 如果关联对象是个集合或者数组,那么对其中的元素进行递归校验,如果是一个map,则对其中的值部分进行校验.(是否进行递归验证) </span></span><br><span class="line"><span class="meta">@CreditCardNumber</span> <span class="comment">//信用卡验证 </span></span><br><span class="line"><span class="meta">@Email</span> <span class="comment">//验证是否是邮件地址，如果为null,不进行验证，算通过验证。 </span></span><br><span class="line"><span class="meta">@ScriptAssert(lang= ,script=, alias=)</span> </span><br><span class="line"><span class="meta">@URL(protocol=,host=, port=,regexp=, flags=)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="数据校验方式"><a href="#数据校验方式" class="headerlink" title="数据校验方式"></a>数据校验方式</h2><p>当我们只在对象中的字段标注了校验注解，不启用在对象上的@Valid和@Validated注解是不生效的</p>
-<h3 id="属性注入值校验"><a href="#属性注入值校验" class="headerlink" title="属性注入值校验"></a>属性注入值校验</h3><p>在配置文件中输入的值，在注入时会对值进行校验</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;people&quot;)</span></span><br><span class="line"><span class="meta">@Validated</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="meta">@NotBlank(message = &quot;姓名不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@Min(value = 0,message = &quot;不能小于0&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="meta">@Past</span></span><br><span class="line">    <span class="keyword">private</span> Data birth;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="方法传参校验"><a href="#方法传参校验" class="headerlink" title="方法传参校验"></a>方法传参校验</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line">    @NotBlank(message = &quot;姓名不能为空&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    @Min(value = 0,message = &quot;不能小于0&quot;)</span><br><span class="line">    private Integer age;</span><br><span class="line">    @Past</span><br><span class="line">    private Data birth;</span><br><span class="line">    @Length(min = 8,max = 20)</span><br><span class="line">    private String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">login</span><span class="params">(<span class="meta">@Valid</span> <span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;200&quot;</span>,<span class="string">&quot;success&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码当执行login方法，传入user对象，@Valid开启校验，会对User对象的字段的值根据字段上的校验注解进行校验，如果校验不通过会抛出异常同时提示错误信息。如果在注解中自定义message错误信息，错误信息则为自定义的，否则是注解中的默认错误信息。</p>
-<h3 id="自定义封装校验结果"><a href="#自定义封装校验结果" class="headerlink" title="自定义封装校验结果"></a>自定义封装校验结果</h3><p>我们也可以给校验的对象后，紧跟一个BindingResult参数，就可以获取到校验的结果。拿到校验的结果，就可以自定义的封装。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">login</span><span class="params">(<span class="meta">@Valid</span> <span class="meta">@RequestBody</span> User user, BindingResult result)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>( result.hasErrors())&#123;</span><br><span class="line">        Map&lt;String,String&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//1.获取错误的校验结果</span></span><br><span class="line">        result.getFieldErrors().forEach((item)-&gt;&#123;</span><br><span class="line">            <span class="comment">//获取发生错误时的message</span></span><br><span class="line">            String message = item.getDefaultMessage();</span><br><span class="line">            <span class="comment">//获取发生错误的字段</span></span><br><span class="line">            String field = item.getField();</span><br><span class="line">            map.put(field,message);</span><br><span class="line">        &#125;);</span><br><span class="line">        map.put(<span class="string">&quot;error&quot;</span>,map);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">       map.put(<span class="string">&quot;200&quot;</span>,<span class="string">&quot;success&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="统一异常处理"><a href="#统一异常处理" class="headerlink" title="统一异常处理"></a>统一异常处理</h2><p>上述都是针对于该请求设置了一个内容校验，如果针对于每个请求都单独进行配置，显然不是太合适，实际上可以统一的对于异常进行处理。</p>
-<p>抽取一个异常处理类，可以使用SpringMvc所提供的@ControllerAdvice，通过“basePackages”能够说明处理哪些路径下的异常,@RestControllerAdvice等同于@RestController。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionControllerAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(value = Exception.class)</span> <span class="comment">// 处理哪种异常类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ApiResult <span class="title">handleValidException</span><span class="params">(MethodArgumentNotValidException exception)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;String,String&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">// 获取数据校验的错误结果</span></span><br><span class="line">        BindingResult bindingResult = exception.getBindingResult();</span><br><span class="line">        bindingResult.getFieldErrors().forEach(fieldError -&gt; &#123;</span><br><span class="line">            String message = fieldError.getDefaultMessage();</span><br><span class="line">            String field = fieldError.getField();</span><br><span class="line">            map.put(field,message);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        log.error(<span class="string">&quot;数据校验出现问题&#123;&#125;,异常类型&#123;&#125;&quot;</span>,exception.getMessage(),exception.getClass());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ApiResult.error(<span class="number">400</span>,<span class="string">&quot;数据校验出现问题&quot;</span>).put(<span class="string">&quot;data&quot;</span>,map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="分组校验功能"><a href="#分组校验功能" class="headerlink" title="分组校验功能"></a>分组校验功能</h2><p>对于不同的操作，字段校验的规则和数量可能是不同的，所以我们将校验规则分组，指定什么情况下才需要进行校验, 对于不同的操作进行不同的校验组，使用groups属性。</p>
-<ol>
-<li><p>想要使用分组校验功能，根据文档我们首先编写不同的校验组接口，只编写空接口，用来表示就可以了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新增分组</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AddGroup</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//修改分组</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UpdateGroup</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>编写好分组接口，对于不同的检验规则，标注不同的分组标识</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@NotBlank(message = &quot;姓名不能为空&quot;, groups=&#123;AddGroup.class,UpdateGroup.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@Min(value = 0,message = &quot;不能小于0&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="meta">@Past</span></span><br><span class="line">    <span class="keyword">private</span> Data birth;</span><br><span class="line">    <span class="meta">@Length(min = 8,max = 20, groups = &#123;AddGroup.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>在方法上标注不同的分组校验，使用@Validated注解：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="comment">//将会校验user带有AddGroup的字段，没有这个分组的字段不会进行校验</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">add</span><span class="params">(<span class="meta">@Validated(&#123;AddGroup.class&#125;)</span> <span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;200&quot;</span>,<span class="string">&quot;success&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>@Validated({AddGroup.class})</strong>:启用不同的分组校验规则。</p>
-<p><strong>注意：</strong>在使用分组校验的情况下，对于没有标注分组的校验规则，默认是不生效的，想要起作用就必须要加groups。</p>
-</li>
-</ol>
-<h2 id="自定义校验功能"><a href="#自定义校验功能" class="headerlink" title="自定义校验功能"></a>自定义校验功能</h2><p>假如我们将要校验showStatus的0或1状态，可以用正则，但我们可以利用自定义校验方式解决。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* 显示状态[0-不显示；1-显示]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> Integer showStatus;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>添加依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.1.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>编写自定义的校验注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="comment">//使用自定义的校验器，可以使用多个校验器</span></span><br><span class="line"><span class="meta">@Constraint(validatedBy = &#123; ListValueConstraintValidator.class&#125;)</span></span><br><span class="line"><span class="meta">@Target(&#123; METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE &#125;)</span></span><br><span class="line"><span class="meta">@Retention(RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ListValue &#123;</span><br><span class="line">    <span class="comment">// 使用该属性去Validation.properties中取</span></span><br><span class="line">    <span class="function">String <span class="title">message</span><span class="params">()</span> <span class="keyword">default</span> &quot;</span>&#123;cn.qmulin.common.valid.ListValue.message&#125;<span class="string">&quot;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Class&lt;?&gt;[] groups() default &#123; &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Class&lt;? extends Payload&gt;[] payload() default &#123; &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    int[] value() default &#123;&#125;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>编写自定义的校验器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListValueConstraintValidator</span> <span class="keyword">implements</span> <span class="title">ConstraintValidator</span>&lt;<span class="title">ListValue</span>,<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Integer&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="comment">//初始化注解可验证的正确数据，用于校验时，这里是获取@ListValue中value值，并初始化</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(ListValue constraintAnnotation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] value = constraintAnnotation.value();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : value) &#123;</span><br><span class="line">            set.add(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//校验结果返回</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(Integer value, ConstraintValidatorContext context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  set.contains(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* 显示状态[0-不显示；1-显示]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@ListValue(value = &#123;0,1&#125;,groups =&#123;AddGroup.class&#125;, message=&quot;必须输入0或1&quot;)</span></span><br><span class="line"><span class="keyword">private</span> Integer showStatus;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+<h2 id="常用的校验注解"><a href="#常用的校验注解" class="headerlink" title="常用的校验注解"></a>常用的校验注解</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/28/JRS303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1037,98 +1083,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/10/28/ES%E6%8E%A5%E5%8F%A3%E6%93%8D%E4%BD%9C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/17/%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="xys-colin">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xys-colin的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/17/%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">进程详解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-17 10:13:20" itemprop="dateCreated datePublished" datetime="2021-09-17T10:13:20+08:00">2021-09-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-17 16:14:02" itemprop="dateModified" datetime="2022-03-17T16:14:02+08:00">2022-03-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="一、进程"><a href="#一、进程" class="headerlink" title="一、进程"></a>一、进程</h2><p>进程的经典定义就是<code>一个执行中程序的实例</code>。系统中的每个程序都运行在某个进程的上下文(context)中，上下文是由程序正确运行所需的状态组成的，这个状态包括<code>存放在内存中的程序的代码和数据，它的栈、通用目的寄存器的内容、程序计数器、环境变量以及打开文件描述符的集合</code>。</p>
-<p>进程提供给应用程序的<strong>关键抽象</strong>：</p>
-<ul>
-<li><strong>一个独立的逻辑控制流，它提供一个假象，好像我们的程序独占地使用处理器</strong>。</li>
-<li><strong>一个私有的地址空间，它提供一个假象，好像我们的程序独占地使用内存系统</strong>。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/17/%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
